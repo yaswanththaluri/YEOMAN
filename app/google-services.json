@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "320795402724",
+    "firebase_url": "https://yeoman-farmer-app.firebaseio.com",
+    "project_id": "yeoman-farmer-app",
+    "storage_bucket": "yeoman-farmer-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:320795402724:android:332777e140ebd0ba2067f1",
+        "android_client_info": {
+          "package_name": "androidapp.yashthaluri.com.yeoman"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "320795402724-qf8vnnsc1j70jlkv6jngrq5ol80gmres.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "androidapp.yashthaluri.com.yeoman",
+            "certificate_hash": "cfb55f5ca97a9cae0604871e38d2029e74c1d7fd"
+          }
+        },
+        {
+          "client_id": "320795402724-53hiiho5vct9vumhnm8c08m7d8i2fj13.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD4I4vQHJ3RwHcnezyypWjuUF-4jCXibU8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "320795402724-53hiiho5vct9vumhnm8c08m7d8i2fj13.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
