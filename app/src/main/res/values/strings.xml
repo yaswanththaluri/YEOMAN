@@ -3,4 +3,13 @@
     <string name="skip">Skip</string>
     <string name="next">next</string>
     <string name="start">GOT IT</string>
+
+    <!-- Authentication Page -->
+    <string name="mobile_number_label">Enter Mobile Number</string>
+    <string name="india_code">+91</string>
+    <string name="button_continue">continue</string>
+    <string name="button_verify">verify</string>
+    <string name="button_resend_otp">resend otp</string>
+    <string name="welcome_text">Welcome to YEOMEN</string>
+    <string name="welcome_note">helping you to find the best wage</string>
 </resources>
