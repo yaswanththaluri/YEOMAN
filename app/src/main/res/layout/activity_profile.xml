@@ -1,0 +1,341 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <ScrollView
+            android:id="@+id/scrollview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/buttonLayout"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginRight="10dp">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/full_name"
+                        style="@style/form_text_view"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="1dp"
+                        android:text="*"
+                        style="@style/form_esterik" />
+
+                </LinearLayout>
+
+                <EditText
+                    android:id="@+id/fullName"
+                    style="@style/form_edit_text_style"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/form_edit_text" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        style="@style/form_text_view"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/last_name" />
+
+                    <TextView
+                        style="@style/form_esterik"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="1dp"
+                        android:text="*" />
+
+                </LinearLayout>
+
+                <EditText
+                    android:id="@+id/lastName"
+                    style="@style/form_edit_text_style"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/form_edit_text" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        style="@style/form_text_view"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/gender" />
+
+                    <TextView
+                        style="@style/form_esterik"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="1dp"
+                        android:text="*" />
+
+                </LinearLayout>
+
+                <Spinner
+                    android:id="@+id/gender"
+                    style="@style/form_edit_text_style"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:background="@drawable/spinner_background"
+                    android:entries="@array/gender" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        style="@style/form_text_view"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/birth_date" />
+
+                    <TextView
+                        style="@style/form_esterik"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="1dp"
+                        android:text="*" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:gravity="center_vertical"
+                    android:textSize="20sp"
+                    android:id="@+id/dob"
+                    style="@style/form_edit_text_style"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/form_edit_text"
+                    android:drawableRight="@drawable/calendar_icon"
+                    android:paddingRight="15dp" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        style="@style/form_text_view"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/phone_number" />
+
+                    <TextView
+                        style="@style/form_esterik"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="1dp"
+                        android:text="*" />
+
+                </LinearLayout>
+
+                <EditText
+                    android:id="@+id/MobileNumber"
+                    style="@style/form_edit_text_style"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/form_edit_text"
+                    android:inputType="phone"
+                    android:maxLength="10" />
+
+                <TextView
+                    style="@style/form_text_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/address" />
+
+                <EditText
+                    android:id="@+id/address"
+                    style="@style/form_edit_text_style"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/form_edit_text"
+                    android:inputType="textMultiLine"
+                    android:maxLines="10"
+
+                    android:minLines="6" />
+
+                <LinearLayout
+                    android:id="@+id/infoImage"
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        style="@style/form_text_view"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/state" />
+
+                    <TextView
+                        style="@style/form_esterik"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="1dp"
+                        android:text="*" />
+
+
+                </LinearLayout>
+
+                <EditText
+                    android:id="@+id/state"
+                    style="@style/form_edit_text_style"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/form_edit_text"/>
+
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        style="@style/form_text_view"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/fileupload" />
+
+                    <TextView
+                        style="@style/form_esterik"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="1dp"
+                        android:text="*" />
+
+                    <ImageView
+                        android:gravity="center_vertical"
+                        android:textSize="20sp"
+                        android:id="@+id/fileupload"
+                        style="@style/form_edit_text_style"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/upload"
+                        android:paddingRight="15dp" />
+
+                </LinearLayout>
+
+
+                <!--            <TextView-->
+                <!--                android:layout_width="wrap_content"-->
+                <!--                android:layout_height="wrap_content"-->
+                <!--                android:layout_marginTop="15dp"-->
+                <!--                android:text="@string/privacy_notice"-->
+                <!--                android:textColor="@color/blue_dark"-->
+                <!--                android:textSize="18sp"-->
+                <!--                android:textStyle="bold" />-->
+
+                <!--            <TextView-->
+                <!--                style="@style/form_text_view"-->
+                <!--                android:layout_width="match_parent"-->
+                <!--                android:layout_height="wrap_content"-->
+                <!--                android:text="@string/privacy_para" />-->
+
+                <!--            <TextView-->
+                <!--                style="@style/form_text_view"-->
+                <!--                android:layout_width="match_parent"-->
+                <!--                android:layout_height="wrap_content"-->
+                <!--                android:text="@string/privacy_para2" />-->
+
+                <CheckBox
+                    android:id="@+id/privacy_checkbox1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/privacy_checkbox1"
+                    android:textColor="#738295" />
+
+                <CheckBox
+                    android:id="@+id/privacy_checkbox2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/privacy_checkbox1"
+                    android:textColor="#738295"
+                    android:layout_marginBottom="15dp" />
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="5dp"
+                    android:background="#738295" />
+
+
+            </LinearLayout>
+
+
+        </ScrollView>
+
+        <LinearLayout
+            android:id="@+id/buttonLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_margin="10dp"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+            <Button
+
+                android:id="@+id/skipBTN"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="#53714B"
+                android:padding="20dp"
+                android:text="@string/skip"
+                android:onClick="onBackPressed"
+                android:textAllCaps="false"
+                android:textColor="@android:color/white" />
+
+            <Button
+
+                android:id="@+id/submitBTN"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_weight="1"
+                android:background="#B7C1CB"
+                android:padding="20dp"
+                android:textAllCaps="false"
+                android:text="@string/submit"
+                android:textColor="@android:color/white" />
+
+
+        </LinearLayout>
+
+    </RelativeLayout>
+</layout>
