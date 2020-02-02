@@ -3,6 +3,12 @@
     <string name="skip">Skip</string>
     <string name="next">next</string>
     <string name="start">GOT IT</string>
+    <string-array name="gender">
+        <item>Select</item>
+        <item>Male</item>
+        <item>Female</item>
+        <item>Others</item>
+    </string-array>
 
     <!-- Authentication Page -->
     <string name="mobile_number_label">Enter Mobile Number</string>
@@ -12,4 +18,20 @@
     <string name="button_resend_otp">resend otp</string>
     <string name="welcome_text">Welcome to YEOMEN</string>
     <string name="welcome_note">helping you to find the best wage</string>
+    <string name="full_name">FirstName</string>
+    <string name="last_name">LastName</string>
+    <string name="gender">Gender</string>
+    <string name="birth_date">Date of Birth</string>
+    <string name="email">Email</string>
+    <string name="address">Address</string>
+    <string name="submit">Submit</string>
+    <string name="contact_lenses">ContactLens</string>
+    <string name="privacy_para">Acuvue collects your personal information to enable us to administer and promote the Offer. Your PI may be provided to third parties assisting in the conduct of the Offer, including our web site hosting service provider, suppliers and deliverers. Your PI will be processed and stored by our web site hosting service provider in Japan, if the PI requested is not provided you may not participate in the Offer. By participating int the Offer you consent to the use of your PI. Subject also to your express consent, which you may give us by opting in below, we may send you specially offers and updates about Acuvue products. You have the tight to access update and request correction ofyou PI, and such request as well as any enquiries or complaints about how we handle your PI contained in our Privacy Policy   </string>
+    <string name="privacy_para2">By clicking submit you agree to the Terms and Conditions and the processing of my PI and as described in Privacy Notice above, You will also agree to receive exclusive offers, news and promotional material about ACUVUE products.</string>
+    <string name="privacy_checkbox1">I agree to the Terms and Conditions and the Privacy Notice above.</string>
+
+    <string name="privacy_notice">Terms and Conditions</string>
+    <string name="phone_number">Mobile Number</string>
+    <string name="state">State</string>
+    <string name="fileupload">File Upload</string>I agree to receive exclusive offers, news and promotional material about ACUVUE produc
 </resources>
