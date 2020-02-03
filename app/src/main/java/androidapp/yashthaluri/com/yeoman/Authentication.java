@@ -18,8 +18,14 @@ import com.google.firebase.FirebaseException;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthProvider;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.concurrent.TimeUnit;
 
@@ -35,6 +41,9 @@ public class Authentication extends AppCompatActivity {
 
     //firebase auth object
     private FirebaseAuth mAuth;
+    private FirebaseUser user;
+    private FirebaseDatabase database;
+    private DatabaseReference reference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +52,9 @@ public class Authentication extends AppCompatActivity {
 
         progressDialog = new ProgressDialog(this);
         progressDialog.setCanceledOnTouchOutside(false);
+
+        database = FirebaseDatabase.getInstance();
+        reference = database.getReference();
 
         mAuth = FirebaseAuth.getInstance();
 
@@ -129,9 +141,7 @@ public class Authentication extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             //verification successful we will start the profile activity
-                            Intent intent = new Intent(Authentication.this, MainActivity.class);
-                            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                            startActivity(intent);
+                            getUserDetails();
 
                         } else {
 
@@ -147,5 +157,53 @@ public class Authentication extends AppCompatActivity {
                         }
                     }
                 });
+    }
+
+    public void getUserDetails()
+    {
+        try
+        {
+            user = mAuth.getCurrentUser();
+            String uid = user.getUid();
+            reference.child("users").child(uid).addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot)
+                {
+                    ProfileHelper profileHelper = dataSnapshot.getValue(ProfileHelper.class);
+
+                    if (profileHelper == null)
+                    {
+                        Intent i = new Intent(Authentication.this, ProfileActivity.class);
+                        startActivity(i);
+                    }
+                    else
+                    {
+                        String isProfileFilled = profileHelper.getIsProfileFilled();
+
+                        if (isProfileFilled.equals("yes"))
+                        {
+                            Intent i = new Intent(Authentication.this, MainActivity.class);
+                            startActivity(i);
+                        }
+                        else
+                        {
+                            Intent i = new Intent(Authentication.this, ProfileActivity.class);
+                            startActivity(i);
+                        }
+                    }
+
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                }
+            });
+        }
+        catch (Exception e)
+        {
+            Intent i = new Intent(this, ProfileActivity.class);
+            startActivity(i);
+        }
     }
 }

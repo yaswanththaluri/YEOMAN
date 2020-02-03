@@ -26,30 +26,29 @@ import androidapp.yashthaluri.com.yeoman.databinding.ActivityProfileBinding;
 
 public class ProfileActivity extends AppCompatActivity {
     ActivityProfileBinding binding;
-
-
     private Calendar calendar;
     private SimpleDateFormat simpleDateFormat;
     private int year, month, day;
     private LinearLayout info;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this,R.layout.activity_profile);
+
         simpleDateFormat = new SimpleDateFormat("dd:MMM:YYYY");
+
+
+
         binding.dob.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 selectBirthDate();
             }
         });
-        binding.skipBTN.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ShowDialog1();
-            }
-        });
+
         binding.submitBTN.setEnabled(false);
         addChangeListener();
         binding.submitBTN.setOnClickListener(new View.OnClickListener() {
@@ -95,6 +94,7 @@ public class ProfileActivity extends AppCompatActivity {
                     }
                     if (TextUtils.isEmpty(binding.MobileNumber.getText().toString())) {
                         binding.MobileNumber.setError("Please enter your MobileNumber");
+
                     }
 
                 }
@@ -192,6 +192,18 @@ public class ProfileActivity extends AppCompatActivity {
         }, year, month, day);
         dialog.show();
     }
+
+
+    public void uploadProfileDetails()
+    {
+        String fName = binding.fullName.getText().toString();
+        String lName = binding.lastName.getText().toString();
+        String gender = binding.gender.getSelectedItem().toString();
+        String dob = binding.dob.getText().toString();
+
+    }
+
+
 
     }
 
