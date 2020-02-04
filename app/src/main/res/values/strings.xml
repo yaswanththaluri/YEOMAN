@@ -33,5 +33,9 @@
     <string name="privacy_notice">Terms and Conditions</string>
     <string name="phone_number">Mobile Number</string>
     <string name="state">State</string>
-    <string name="fileupload">File Upload</string>I agree to receive exclusive offers, news and promotional material about ACUVUE produc
+    <string name="fileupload">File Upload</string>
+    <string name="PinCode">pincode</string>
+    <string name="city">City</string>
+    <string name="fullname">Name</string>
+    <string name="aadhar">AadharNumber</string>I agree to receive exclusive offers, news and promotional material about ACUVUE produc
 </resources>
