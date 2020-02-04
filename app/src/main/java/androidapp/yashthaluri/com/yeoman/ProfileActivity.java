@@ -26,12 +26,34 @@ import androidapp.yashthaluri.com.yeoman.databinding.ActivityProfileBinding;
 
 public class ProfileActivity extends AppCompatActivity {
     ActivityProfileBinding binding;
+    private final TextWatcher watcher = new TextWatcher() {
+        @Override
+        public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+        }
+
+        @Override
+        public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+        }
+
+        @Override
+        public void afterTextChanged(Editable editable) {
+            if (binding.fullName.getText().toString().length() == 0 ||binding.state.getText().toString().length() ==0 || binding.lastName.getText().toString().length() == 0 || binding.MobileNumber.getText().toString().length() == 0 || binding.address.getText().toString().length() == 0 || binding.dob.getText().toString().length() == 0) {
+                binding.submitBTN.setEnabled(false);
+
+            } else {
+
+                binding.submitBTN.setBackgroundColor(getResources().getColor(R.color.blue_dark));
+                binding.submitBTN.setEnabled(true);
+            }
+
+        }
+    };
     private Calendar calendar;
     private SimpleDateFormat simpleDateFormat;
     private int year, month, day;
     private LinearLayout info;
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -113,30 +135,6 @@ public class ProfileActivity extends AppCompatActivity {
         binding.state.addTextChangedListener(watcher);
 
     }
-    private final TextWatcher watcher = new TextWatcher() {
-        @Override
-        public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-        }
-
-        @Override
-        public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-        }
-
-        @Override
-        public void afterTextChanged(Editable editable) {
-            if (binding.fullName.getText().toString().length() == 0 ||binding.state.getText().toString().length() ==0 || binding.lastName.getText().toString().length() == 0 || binding.MobileNumber.getText().toString().length() == 0 || binding.address.getText().toString().length() == 0 || binding.dob.getText().toString().length() == 0) {
-                binding.submitBTN.setEnabled(false);
-
-            } else {
-
-                binding.submitBTN.setBackgroundColor(getResources().getColor(R.color.blue_dark));
-                binding.submitBTN.setEnabled(true);
-            }
-
-        }
-    };
 
     private void ShowDialog1() {
     }
@@ -205,5 +203,5 @@ public class ProfileActivity extends AppCompatActivity {
 
 
 
-    }
+}
 
