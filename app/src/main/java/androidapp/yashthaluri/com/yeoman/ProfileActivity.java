@@ -44,12 +44,7 @@ public class ProfileActivity extends AppCompatActivity {
                 selectBirthDate();
             }
         });
-        binding.skipBTN.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ShowDialog1();
-            }
-        });
+
         binding.submitBTN.setEnabled(false);
         addChangeListener();
         binding.submitBTN.setOnClickListener(new View.OnClickListener() {
@@ -59,9 +54,6 @@ public class ProfileActivity extends AppCompatActivity {
                     if (TextUtils.isEmpty(binding.fullName.getText().toString())) {
                         binding.fullName.setError("Please enter your First Name");
                         binding.fullName.requestFocus();
-                    } else if (TextUtils.isEmpty(binding.lastName.getText().toString())) {
-                        binding.lastName.setError("Please enter your Last Name");
-                        binding.lastName.requestFocus();
                     } else if (TextUtils.isEmpty(binding.dob.getText().toString())) {
                         binding.dob.setError("Please select your Date of Birth");
                         binding.dob.requestFocus();
@@ -77,6 +69,10 @@ public class ProfileActivity extends AppCompatActivity {
                         binding.state.setError("Please enter your address");
                         binding.state.requestFocus();
                     }
+                    else if (TextUtils.isEmpty(binding.AadharNumber.getText().toString())) {
+                        binding.AadharNumber.setError("Please enter your Last Name");
+                        binding.AadharNumber.requestFocus();
+                    }
                     else if (binding.gender.getSelectedItem().toString().equals("Select")) {
                         Toast.makeText(ProfileActivity.this, "Please select your gender", Toast.LENGTH_SHORT).show();
                     } else if (!binding.privacyCheckbox1.isChecked() && !binding.privacyCheckbox2.isChecked()) {
@@ -90,9 +86,7 @@ public class ProfileActivity extends AppCompatActivity {
                     if (TextUtils.isEmpty(binding.fullName.getText().toString())) {
                         binding.fullName.setError("Please enter your first name");
                     }
-                    if (TextUtils.isEmpty(binding.lastName.getText().toString())) {
-                        binding.lastName.setError("Please enter your last name");
-                    }
+
                     if (TextUtils.isEmpty(binding.MobileNumber.getText().toString())) {
                         binding.MobileNumber.setError("Please enter your MobileNumber");
                     }
@@ -106,7 +100,7 @@ public class ProfileActivity extends AppCompatActivity {
 
     private void addChangeListener() {
         binding.fullName.addTextChangedListener(watcher);
-        binding.lastName.addTextChangedListener(watcher);
+        binding.AadharNumber.addTextChangedListener(watcher);
         binding.MobileNumber.addTextChangedListener(watcher);
         binding.address.addTextChangedListener(watcher);
         binding.dob.addTextChangedListener(watcher);
@@ -126,7 +120,7 @@ public class ProfileActivity extends AppCompatActivity {
 
         @Override
         public void afterTextChanged(Editable editable) {
-            if (binding.fullName.getText().toString().length() == 0 ||binding.state.getText().toString().length() ==0 || binding.lastName.getText().toString().length() == 0 || binding.MobileNumber.getText().toString().length() == 0 || binding.address.getText().toString().length() == 0 || binding.dob.getText().toString().length() == 0) {
+            if (binding.fullName.getText().toString().length() == 0 ||binding.state.getText().toString().length() ==0 || binding.AadharNumber.getText().toString().length() == 0 || binding.MobileNumber.getText().toString().length() == 0 || binding.address.getText().toString().length() == 0 || binding.dob.getText().toString().length() == 0) {
                 binding.submitBTN.setEnabled(false);
 
             } else {
