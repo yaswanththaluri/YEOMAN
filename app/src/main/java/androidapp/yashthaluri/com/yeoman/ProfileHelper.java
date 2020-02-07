@@ -8,17 +8,19 @@ public class ProfileHelper
     private String gender;
     private String address;
     private String city;
+    private String state;
     private String zipCode;
     private String aadharFileLink;
     private String isProfileFilled;
     private String isProfileVerified;
+    private String lang;
 
     public ProfileHelper()
     {
 
     }
 
-    public ProfileHelper(String userName, String role, String aadharNo, String gender, String address, String city, String zipCode, String aadharFileLink, String isProfileFilled, String isProfileVerified)
+    public ProfileHelper(String userName, String role, String aadharNo, String gender, String address, String city, String state, String zipCode, String aadharFileLink, String isProfileFilled, String isProfileVerified, String lang)
     {
         this.userName = userName;
         this.role = role;
@@ -26,10 +28,12 @@ public class ProfileHelper
         this.gender = gender;
         this.address = address;
         this.city = city;
+        this.state = state;
         this.zipCode = zipCode;
         this.aadharFileLink = aadharFileLink;
         this.isProfileFilled = isProfileFilled;
         this.isProfileVerified = isProfileVerified;
+        this.lang = lang;
     }
 
     public String getAadharFileLink() {
@@ -110,5 +114,21 @@ public class ProfileHelper
 
     public void setIsProfileVerified(String isProfileVerified) {
         this.isProfileVerified = isProfileVerified;
+    }
+
+    public void setState(String state) {
+        this.state = state;
+    }
+
+    public String getState() {
+        return state;
+    }
+
+    public String getLang() {
+        return lang;
+    }
+
+    public void setLang(String lang) {
+        this.lang = lang;
     }
 }

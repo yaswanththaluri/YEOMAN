@@ -5,6 +5,7 @@ import androidx.core.app.NotificationManagerCompat;
 import androidx.databinding.DataBindingUtil;
 
 import android.app.DatePickerDialog;
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextUtils;
@@ -19,41 +20,28 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 
 import androidapp.yashthaluri.com.yeoman.databinding.ActivityProfileBinding;
 
 public class ProfileActivity extends AppCompatActivity {
     ActivityProfileBinding binding;
-    private final TextWatcher watcher = new TextWatcher() {
-        @Override
-        public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-        }
-
-        @Override
-        public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-        }
-
-        @Override
-        public void afterTextChanged(Editable editable) {
-            if (binding.fullName.getText().toString().length() == 0 ||binding.state.getText().toString().length() ==0 || binding.lastName.getText().toString().length() == 0 || binding.MobileNumber.getText().toString().length() == 0 || binding.address.getText().toString().length() == 0 || binding.dob.getText().toString().length() == 0) {
-                binding.submitBTN.setEnabled(false);
-
-            } else {
-
-                binding.submitBTN.setBackgroundColor(getResources().getColor(R.color.blue_dark));
-                binding.submitBTN.setEnabled(true);
-            }
-
-        }
-    };
     private Calendar calendar;
     private SimpleDateFormat simpleDateFormat;
     private int year, month, day;
     private LinearLayout info;
+    private FirebaseAuth auth;
+    private FirebaseUser user;
+    private FirebaseDatabase database;
+    private DatabaseReference databaseReference;
+    private ProgressDialog dialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,7 +50,14 @@ public class ProfileActivity extends AppCompatActivity {
 
         simpleDateFormat = new SimpleDateFormat("dd:MMM:YYYY");
 
+        auth = FirebaseAuth.getInstance();
+        user = auth.getCurrentUser();
 
+        database = FirebaseDatabase.getInstance();
+        databaseReference = database.getReference();
+
+        dialog = new ProgressDialog(this);
+        dialog.setCanceledOnTouchOutside(false);
 
         binding.dob.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -80,15 +75,12 @@ public class ProfileActivity extends AppCompatActivity {
                     if (TextUtils.isEmpty(binding.fullName.getText().toString())) {
                         binding.fullName.setError("Please enter your First Name");
                         binding.fullName.requestFocus();
-                    } else if (TextUtils.isEmpty(binding.lastName.getText().toString())) {
-                        binding.lastName.setError("Please enter your Last Name");
-                        binding.lastName.requestFocus();
                     } else if (TextUtils.isEmpty(binding.dob.getText().toString())) {
                         binding.dob.setError("Please select your Date of Birth");
                         binding.dob.requestFocus();
-                    } else if (TextUtils.isEmpty(binding.MobileNumber.getText().toString())) {
-                        binding.MobileNumber.setError("Please enter your MobileNumber");
-                        binding.MobileNumber.requestFocus();
+                    } else if (TextUtils.isEmpty(binding.pinCode.getText().toString())) {
+                        binding.pinCode.setError("Please enter your PIN CODE");
+                        binding.pinCode.requestFocus();
                     } else if (TextUtils.isEmpty(binding.address.getText().toString())) {
                         binding.address.setError("Please enter your address");
                         binding.address.requestFocus();
@@ -98,24 +90,26 @@ public class ProfileActivity extends AppCompatActivity {
                         binding.state.setError("Please enter your address");
                         binding.state.requestFocus();
                     }
+                    else if (TextUtils.isEmpty(binding.AadharNumber.getText().toString())) {
+                        binding.AadharNumber.setError("Please enter your Last Name");
+                        binding.AadharNumber.requestFocus();
+                    }
                     else if (binding.gender.getSelectedItem().toString().equals("Select")) {
                         Toast.makeText(ProfileActivity.this, "Please select your gender", Toast.LENGTH_SHORT).show();
                     } else if (!binding.privacyCheckbox1.isChecked() && !binding.privacyCheckbox2.isChecked()) {
                         Toast.makeText(ProfileActivity.this, "Please check both the terms and condition", Toast.LENGTH_SHORT).show();
                     } else {
 
-                        Toast.makeText(ProfileActivity.this, "Details Submitted", Toast.LENGTH_SHORT).show();
+                        uploadProfileDetails();
 
                     }
                 } else {
                     if (TextUtils.isEmpty(binding.fullName.getText().toString())) {
                         binding.fullName.setError("Please enter your first name");
                     }
-                    if (TextUtils.isEmpty(binding.lastName.getText().toString())) {
-                        binding.lastName.setError("Please enter your last name");
-                    }
-                    if (TextUtils.isEmpty(binding.MobileNumber.getText().toString())) {
-                        binding.MobileNumber.setError("Please enter your MobileNumber");
+
+                    if (TextUtils.isEmpty(binding.pinCode.getText().toString())) {
+                        binding.pinCode.setError("Please enter your MobileNumber");
 
                     }
 
@@ -128,14 +122,37 @@ public class ProfileActivity extends AppCompatActivity {
 
     private void addChangeListener() {
         binding.fullName.addTextChangedListener(watcher);
-        binding.lastName.addTextChangedListener(watcher);
-        binding.MobileNumber.addTextChangedListener(watcher);
+        binding.AadharNumber.addTextChangedListener(watcher);
+        binding.pinCode.addTextChangedListener(watcher);
         binding.address.addTextChangedListener(watcher);
         binding.dob.addTextChangedListener(watcher);
         binding.state.addTextChangedListener(watcher);
 
     }
+    private final TextWatcher watcher = new TextWatcher() {
+        @Override
+        public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
+        }
+
+        @Override
+        public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+        }
+
+        @Override
+        public void afterTextChanged(Editable editable) {
+            if (binding.fullName.getText().toString().length() == 0 ||binding.state.getText().toString().length() ==0 || binding.AadharNumber.getText().toString().length() == 0 || binding.pinCode.getText().toString().length() == 0 || binding.address.getText().toString().length() == 0 || binding.dob.getText().toString().length() == 0) {
+                binding.submitBTN.setEnabled(false);
+
+            } else {
+
+                binding.submitBTN.setBackgroundColor(getResources().getColor(R.color.blue_dark));
+                binding.submitBTN.setEnabled(true);
+            }
+
+        }
+    };
     private void ShowDialog1() {
     }
 
@@ -194,11 +211,29 @@ public class ProfileActivity extends AppCompatActivity {
 
     public void uploadProfileDetails()
     {
-        String fName = binding.fullName.getText().toString();
-        String lName = binding.lastName.getText().toString();
+        dialog.setMessage("Uploading Details...Please wait!");
+        dialog.show();
+        String fullName = binding.fullName.getText().toString();
+        String aadhar = binding.AadharNumber.getText().toString();
         String gender = binding.gender.getSelectedItem().toString();
         String dob = binding.dob.getText().toString();
+        String pinCode = binding.pinCode.getText().toString();
+        String address = binding.address.getText().toString();
+        String city = binding.city.getText().toString();
+        String state = binding.state.getText().toString();
+        String aaharURL = "www.none.com";
 
+        try
+        {
+            ProfileHelper helper = new ProfileHelper(fullName, "user", aadhar, gender, address, city, state, pinCode, aaharURL, "yes", "no", "english");
+            databaseReference.child("users").child(user.getUid()).setValue(helper);
+        }
+        catch (Exception e)
+        {
+            Toast.makeText(ProfileActivity.this, "Error in saving details", Toast.LENGTH_SHORT).show();
+        }
+
+        dialog.dismiss();
     }
 
 

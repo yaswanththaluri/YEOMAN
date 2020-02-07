@@ -37,7 +37,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/full_name"
+                        android:text="@string/fullname"
                         style="@style/form_text_view"
                         android:textSize="15sp" />
 
@@ -57,32 +57,6 @@
                     android:layout_height="wrap_content"
                     android:background="@drawable/form_edit_text" />
 
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        style="@style/form_text_view"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/last_name" />
-
-                    <TextView
-                        style="@style/form_esterik"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="1dp"
-                        android:text="*" />
-
-                </LinearLayout>
-
-                <EditText
-                    android:id="@+id/lastName"
-                    style="@style/form_edit_text_style"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/form_edit_text" />
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -152,7 +126,7 @@
                         style="@style/form_text_view"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/phone_number" />
+                        android:text="@string/PinCode" />
 
                     <TextView
                         style="@style/form_esterik"
@@ -164,7 +138,7 @@
                 </LinearLayout>
 
                 <EditText
-                    android:id="@+id/MobileNumber"
+                    android:id="@+id/pinCode"
                     style="@style/form_edit_text_style"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -188,6 +162,36 @@
                     android:maxLines="10"
 
                     android:minLines="6" />
+
+                <LinearLayout
+                    android:id="@+id/infoImage1"
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        style="@style/form_text_view"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/city" />
+
+                    <TextView
+                        style="@style/form_esterik"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="1dp"
+                        android:text="*" />
+
+
+                </LinearLayout>
+
+                <EditText
+                    android:id="@+id/city"
+                    style="@style/form_edit_text_style"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/form_edit_text"/>
 
                 <LinearLayout
                     android:id="@+id/infoImage"
@@ -219,10 +223,33 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/form_edit_text" />
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
 
+                    <TextView
+                        style="@style/form_text_view"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/aadhar" />
 
+                    <TextView
+                        style="@style/form_esterik"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="1dp"
+                        android:text="*" />
 
+                </LinearLayout>
 
+                <EditText
+                    android:id="@+id/AadharNumber"
+                    style="@style/form_edit_text_style"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="phone"
+                    android:background="@drawable/form_edit_text" />
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
