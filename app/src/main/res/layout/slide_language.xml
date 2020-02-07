@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/iconlanguage"
+            android:layout_centerInParent="true" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Choose Language to display"
+            android:textSize="18sp"
+            android:layout_margin="20dp"
+            android:layout_centerHorizontal="true"
+            android:textColor="#53714B" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_centerInParent="true">
+
+            <Button
+                android:layout_width="250dp"
+                android:layout_height="50dp"
+                android:background="@drawable/button_bg"
+                android:text="ENGLISH"
+                android:layout_marginBottom="20dp"
+                android:textColor="#ffffff"
+                android:id="@+id/englishLanguage"/>
+
+            <Button
+                android:layout_width="250dp"
+                android:layout_height="50dp"
+                android:background="@drawable/button_bg"
+                android:text="TELUGU"
+                android:layout_marginTop="20dp"
+                android:textColor="#ffffff"
+                android:layout_below="@id/englishLanguage"
+                android:id="@+id/teluguLanguage"/>
+
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</LinearLayout>
