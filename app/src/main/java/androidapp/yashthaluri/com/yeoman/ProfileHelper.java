@@ -7,7 +7,7 @@ public class ProfileHelper
     private String aadharNo;
     private String gender;
     private String address;
-    private String city;
+    private String village;
     private String state;
     private String zipCode;
     private String aadharFileLink;
@@ -20,14 +20,14 @@ public class ProfileHelper
 
     }
 
-    public ProfileHelper(String userName, String role, String aadharNo, String gender, String address, String city, String state, String zipCode, String aadharFileLink, String isProfileFilled, String isProfileVerified, String lang)
+    public ProfileHelper(String userName, String role, String aadharNo, String gender, String address, String village, String state, String zipCode, String aadharFileLink, String isProfileFilled, String isProfileVerified, String lang)
     {
         this.userName = userName;
         this.role = role;
         this.aadharNo = aadharNo;
         this.gender = gender;
         this.address = address;
-        this.city = city;
+        this.village = village;
         this.state = state;
         this.zipCode = zipCode;
         this.aadharFileLink = aadharFileLink;
@@ -48,8 +48,8 @@ public class ProfileHelper
         return address;
     }
 
-    public String getCity() {
-        return city;
+    public String getVillage() {
+        return village;
     }
 
     public String getGender() {
@@ -84,8 +84,8 @@ public class ProfileHelper
         this.address = address;
     }
 
-    public void setCity(String city) {
-        this.city = city;
+    public void setVillage(String village) {
+        this.village = village;
     }
 
     public void setGender(String gender) {

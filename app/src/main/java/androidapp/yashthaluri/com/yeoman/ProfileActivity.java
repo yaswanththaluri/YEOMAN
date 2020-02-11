@@ -222,10 +222,11 @@ public class ProfileActivity extends AppCompatActivity {
         String city = binding.city.getText().toString();
         String state = binding.state.getText().toString();
         String aaharURL = "www.none.com";
+        String role = binding.role.getSelectedItem().toString();
 
         try
         {
-            ProfileHelper helper = new ProfileHelper(fullName, "user", aadhar, gender, address, city, state, pinCode, aaharURL, "yes", "no", "english");
+            ProfileHelper helper = new ProfileHelper(fullName, role, aadhar, gender, address, city, state, pinCode, aaharURL, "yes", "no", "english");
             databaseReference.child("users").child(user.getUid()).setValue(helper);
         }
         catch (Exception e)

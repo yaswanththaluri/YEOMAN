@@ -57,6 +57,34 @@
                     android:layout_height="wrap_content"
                     android:background="@drawable/form_edit_text" />
 
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        style="@style/form_text_view"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/userrole" />
+
+                    <TextView
+                        style="@style/form_esterik"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="1dp"
+                        android:text="*" />
+
+                </LinearLayout>
+
+                <Spinner
+                    android:id="@+id/role"
+                    style="@style/form_edit_text_style"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:background="@drawable/spinner_background"
+                    android:entries="@array/userroles" />
+
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -174,7 +202,7 @@
                         style="@style/form_text_view"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/city" />
+                        android:text="@string/village" />
 
                     <TextView
                         style="@style/form_esterik"

@@ -29,9 +29,16 @@
     <string name="state">State</string>
     <string name="fileupload">File Upload</string>
     <string name="PinCode">pincode</string>
-    <string name="city">City</string>
+    <string name="village">Village</string>
+    <string name="userrole">Role (cannot be changed in future)</string>
     <string name="fullname">Name</string>
     <string name="aadhar">AadharNumber</string>
+    <string-array name="userroles">
+        <item>Select</item>
+        <item>Farmer</item>
+        <item>Labour</item>
+        <item>Village Admin</item>
+    </string-array>
     <string-array name="gender">
         <item>Select</item>
         <item>Male</item>
