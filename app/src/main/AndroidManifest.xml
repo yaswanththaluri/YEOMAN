@@ -13,10 +13,11 @@
         tools:ignore="GoogleAppIndexingWarning">
         <activity android:name=".Authentication" />
         <activity android:name=".WelcomeActivity" />
-        <activity android:name=".MainActivity" />
+        <activity android:name=".MainActivity"
+            android:hardwareAccelerated="true"/>
         <activity android:name=".ProfileActivity" />
-        <activity android:name=".SplashScreenActivity" />
-        <activity android:name=".EditProfileDetailActivity">
+        <activity android:name=".EditProfileDetailActivity" />
+        <activity android:name=".SplashScreenActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

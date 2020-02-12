@@ -24,7 +24,8 @@
 
 
 
-            <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+            <de.hdodenhof.circleimageview.CircleImageView
+                xmlns:app="http://schemas.android.com/apk/res-auto"
                 android:id="@+id/profile_image"
                 android:layout_width="96dp"
                 android:layout_height="96dp"
@@ -204,7 +205,7 @@
                             style="@style/form_text_view"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/city" />
+                            android:text="@string/village" />
 
                         <TextView
                             style="@style/form_esterik"
@@ -504,7 +505,7 @@
                             style="@style/form_text_view"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/city" />
+                            android:text="@string/village" />
 
                         <TextView
                             style="@style/form_esterik"
