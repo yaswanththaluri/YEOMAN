@@ -11,7 +11,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".Activities.BookActivity"></activity>
+        <activity android:name=".Activities.DetailWorkersShowActivity"></activity>
         <activity android:name=".Activities.MainActivity" />
         <activity android:name=".Activities.Authentication" />
         <activity android:name=".Activities.WelcomeActivity" />
@@ -20,7 +20,7 @@
             android:hardwareAccelerated="true" />
         <activity android:name=".Activities.ProfileActivity" />
         <activity android:name=".Activities.EditProfileDetailActivity" />
-        <activity android:name=".Activities.DetailWorkersShowActivity">
+        <activity android:name=".Activities.BookActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
