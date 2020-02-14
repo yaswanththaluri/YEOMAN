@@ -11,13 +11,16 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
+        <activity android:name=".DetailWorkersShowActivity"></activity>
+        <activity android:name=".MainActivity" />
         <activity android:name=".Authentication" />
         <activity android:name=".WelcomeActivity" />
-        <activity android:name=".MainActivity"
-            android:hardwareAccelerated="true"/>
+        <activity
+            android:name=".SplashScreenActivity"
+            android:hardwareAccelerated="true" />
         <activity android:name=".ProfileActivity" />
         <activity android:name=".EditProfileDetailActivity" />
-        <activity android:name=".SplashScreenActivity">
+        <activity android:name=".BookActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

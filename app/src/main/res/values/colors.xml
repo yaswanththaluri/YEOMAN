@@ -6,6 +6,8 @@
     <color name="blue_dark">#53714B</color>
     <color name="white">#ffffff</color>
     <color name="colorTextBlueDark">#53714B</color>
+    <color name="contentDividerLine">#e0e0e0</color>
+    <color name="bgTitleRight">#ffffff</color>
 
 
     <!-- dots inactive colors -->
