@@ -9,13 +9,12 @@
     android:orientation="horizontal">
 
     <RelativeLayout
-        android:layout_width="match_parent"
+        android:layogitut_width="match_parent"
         android:layout_height="155dp"
         android:layout_weight="3"
         android:background="#ffffff"
         android:gravity="center_horizontal"
         android:orientation="vertical">
-
 
         <de.hdodenhof.circleimageview.CircleImageView
             xmlns:app="http://schemas.android.com/apk/res-auto"
