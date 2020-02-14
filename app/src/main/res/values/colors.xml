@@ -2,12 +2,10 @@
 <resources>
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
-    <color name="colorAccent">#53714B</color>
+    <color name="colorAccent">#D81B60</color>
     <color name="blue_dark">#53714B</color>
     <color name="white">#ffffff</color>
     <color name="colorTextBlueDark">#53714B</color>
-    <color name="contentDividerLine">#e0e0e0</color>
-    <color name="bgTitleRight">#ffffff</color>
 
 
     <!-- dots inactive colors -->
@@ -35,4 +33,5 @@
         <item>@color/dot_inactive_screen3</item>
         <item>@color/dot_active_screen4</item>
     </array>
+
 </resources>

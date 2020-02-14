@@ -1,14 +1,16 @@
-package androidapp.yashthaluri.com.yeoman;
+package androidapp.yashthaluri.com.yeoman.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class DetailWorkersShowActivity extends AppCompatActivity {
+import androidapp.yashthaluri.com.yeoman.R;
+
+public class BookActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_detail_workers_show);
+        setContentView(R.layout.activity_book);
     }
 }

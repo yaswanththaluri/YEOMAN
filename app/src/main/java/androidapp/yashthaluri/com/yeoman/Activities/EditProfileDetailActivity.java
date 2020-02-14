@@ -1,4 +1,4 @@
-package androidapp.yashthaluri.com.yeoman;
+package androidapp.yashthaluri.com.yeoman.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
@@ -22,6 +22,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
+import androidapp.yashthaluri.com.yeoman.Models.ProfileHelper;
+import androidapp.yashthaluri.com.yeoman.R;
 import androidapp.yashthaluri.com.yeoman.databinding.ActivityEditProfileDetailBinding;
 
 public class EditProfileDetailActivity extends AppCompatActivity {
@@ -38,7 +40,7 @@ public class EditProfileDetailActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding= DataBindingUtil.setContentView(this,R.layout.activity_edit_profile_detail);
+        binding= DataBindingUtil.setContentView(this, R.layout.activity_edit_profile_detail);
         
         binding.floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override

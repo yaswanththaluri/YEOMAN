@@ -1,7 +1,6 @@
-package androidapp.yashthaluri.com.yeoman;
+package androidapp.yashthaluri.com.yeoman.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.NotificationManagerCompat;
 import androidx.databinding.DataBindingUtil;
 
 import android.app.DatePickerDialog;
@@ -11,13 +10,8 @@ import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.view.View;
-import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.DatePicker;
-import android.widget.EditText;
 import android.widget.LinearLayout;
-import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -27,8 +21,9 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
 
+import androidapp.yashthaluri.com.yeoman.Models.ProfileHelper;
+import androidapp.yashthaluri.com.yeoman.R;
 import androidapp.yashthaluri.com.yeoman.databinding.ActivityProfileBinding;
 
 public class ProfileActivity extends AppCompatActivity {
@@ -46,7 +41,7 @@ public class ProfileActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = DataBindingUtil.setContentView(this,R.layout.activity_profile);
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_profile);
 
         simpleDateFormat = new SimpleDateFormat("dd:MMM:YYYY");
 
