@@ -1,4 +1,4 @@
-package androidapp.yashthaluri.com.yeoman;
+package androidapp.yashthaluri.com.yeoman.Utilis;
 
 import android.content.Context;
 import android.content.SharedPreferences;

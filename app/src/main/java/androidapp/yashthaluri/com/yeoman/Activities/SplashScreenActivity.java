@@ -1,4 +1,4 @@
-package androidapp.yashthaluri.com.yeoman;
+package androidapp.yashthaluri.com.yeoman.Activities;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -18,6 +18,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import androidapp.yashthaluri.com.yeoman.Models.ProfileHelper;
+import androidapp.yashthaluri.com.yeoman.R;
 import androidapp.yashthaluri.com.yeoman.databinding.ActivitySplashScreenBinding;
 
 public class SplashScreenActivity extends AppCompatActivity {
@@ -30,7 +32,7 @@ public class SplashScreenActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = DataBindingUtil.setContentView(this,R.layout.activity_splash_screen);
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_splash_screen);
 
         auth = FirebaseAuth.getInstance();
         user = auth.getCurrentUser();

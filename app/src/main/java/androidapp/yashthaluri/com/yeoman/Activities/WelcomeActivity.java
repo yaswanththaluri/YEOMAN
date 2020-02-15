@@ -1,4 +1,4 @@
-package androidapp.yashthaluri.com.yeoman;
+package androidapp.yashthaluri.com.yeoman.Activities;
 
 import android.content.Context;
 import android.content.Intent;
@@ -18,6 +18,8 @@ import androidx.databinding.DataBindingUtil;
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
+import androidapp.yashthaluri.com.yeoman.Utilis.PreferenceManager;
+import androidapp.yashthaluri.com.yeoman.R;
 import androidapp.yashthaluri.com.yeoman.databinding.ActivityWelcomeBinding;
 
 public class WelcomeActivity extends AppCompatActivity {
