@@ -1,12 +1,18 @@
 package androidapp.yashthaluri.com.yeoman;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 
 import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
@@ -15,13 +21,23 @@ import android.widget.DatePicker;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.UserProfileChangeRequest;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -36,6 +52,11 @@ public class EditProfileDetailActivity extends AppCompatActivity {
     private DatabaseReference databaseReference;
     private ProgressDialog dialog;
     private boolean editFabFlag = false;
+    private Uri filePath;
+    private final int PICK_IMAGE_REQUEST = 71;
+    private FirebaseStorage storage;
+    private StorageReference reference;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,6 +76,9 @@ public class EditProfileDetailActivity extends AppCompatActivity {
 
         dialog = new ProgressDialog(this);
         dialog.setCanceledOnTouchOutside(false);
+
+        storage = FirebaseStorage.getInstance();
+        reference = storage.getReference();
 
 
         binding.submitBTN1.setEnabled(false);
@@ -118,6 +142,13 @@ public class EditProfileDetailActivity extends AppCompatActivity {
                     binding.submitBTN1.setVisibility(View.VISIBLE);
                 }
                 editFabFlag= !editFabFlag;
+            }
+        });
+
+        binding.profileImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                uploadProfilePic();
             }
         });
 
@@ -231,4 +262,121 @@ public class EditProfileDetailActivity extends AppCompatActivity {
         binding.city.setFocusableInTouchMode(true);
         binding.state.setFocusableInTouchMode(true);
     }
+
+    public void uploadProfilePic()
+    {
+        AlertDialog.Builder dialog = new AlertDialog.Builder(EditProfileDetailActivity.this);
+
+        dialog.setTitle("Confirmation");
+
+        dialog.setMessage("Are You sure you want to change the profile pic");
+
+        dialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Intent intent = new Intent();
+                intent.setType("image/*");
+                intent.setAction(Intent.ACTION_PICK);
+                startActivityForResult(Intent.createChooser(intent, "Select Image"), PICK_IMAGE_REQUEST);
+            }
+        });
+
+        dialog.setNegativeButton("No", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+
+        dialog.show();
+
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null && data.getData() != null) {
+            filePath = data.getData();
+
+            try {
+                //getting image from gallery
+                Bitmap bitmap = MediaStore.Images.Media.getBitmap(EditProfileDetailActivity.this.getContentResolver(), filePath);
+
+                //Setting image to ImageView
+//                i.setImageBitmap(bitmap);
+                Glide.with(this).applyDefaultRequestOptions(RequestOptions.circleCropTransform()).load(bitmap).into(binding.profileImage);
+                select();
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    public void select()
+    {
+        final ProgressDialog pd = new ProgressDialog(EditProfileDetailActivity.this);
+        pd.setMessage("Uploading.....");
+        pd.setCanceledOnTouchOutside(false);
+        pd.show();
+        if(filePath != null) {
+            pd.show();
+
+            FirebaseUser user = auth.getCurrentUser();
+
+            final StorageReference childRef = reference.child("ProfileImages").child(user.getUid());
+
+            //uploading the image
+            UploadTask uploadTask = childRef.putFile(filePath);
+
+            uploadTask.addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                @Override
+                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                    pd.dismiss();
+                    Toast.makeText(EditProfileDetailActivity.this, "Upload successful", Toast.LENGTH_SHORT).show();
+                    childRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                        @Override
+                        public void onSuccess(Uri uri) {
+                            Uri download = uri;
+                            setUri(download);
+                        }
+                    });
+                }
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                    pd.dismiss();
+                    Toast.makeText(EditProfileDetailActivity.this, "Upload Failed -> " + e, Toast.LENGTH_SHORT).show();
+                }
+            });
+        }
+        else {
+            Toast.makeText(EditProfileDetailActivity.this, "Select an image", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    public void setUri(Uri download)
+    {
+        FirebaseUser user = auth.getCurrentUser();
+
+        UserProfileChangeRequest profile = new UserProfileChangeRequest.Builder()
+                .setPhotoUri(download).build();
+
+        user.updateProfile(profile)
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (task.isSuccessful())
+                        {
+                            Toast.makeText(EditProfileDetailActivity.this, "Saved Successfully", Toast.LENGTH_SHORT).show();
+                        }
+                        else
+                        {
+                            Toast.makeText(EditProfileDetailActivity.this, "Failed saving path", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+    }
+
 }

@@ -11,6 +11,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -77,7 +79,8 @@ public class MainActivity extends AppCompatActivity {
         }
         else
         {
-            binding.dshbrdProfilePic.setImageURI(user.getPhotoUrl());
+            Glide.with(this).applyDefaultRequestOptions(RequestOptions.circleCropTransform()).load(user.getPhotoUrl()).into(binding.dshbrdProfilePic);
+
         }
     }
 }
