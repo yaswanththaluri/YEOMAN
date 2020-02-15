@@ -11,13 +11,19 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".Authentication" />
-        <activity android:name=".WelcomeActivity" />
+        <activity android:name=".Authentication"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".WelcomeActivity"
+            android:screenOrientation="portrait"/>
         <activity android:name=".MainActivity"
-            android:hardwareAccelerated="true"/>
-        <activity android:name=".ProfileActivity" />
-        <activity android:name=".EditProfileDetailActivity" />
-        <activity android:name=".SplashScreenActivity">
+            android:hardwareAccelerated="true"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".ProfileActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".EditProfileDetailActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".SplashScreenActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
