@@ -1,15 +1,12 @@
-package androidapp.yashthaluri.com.yeoman;
+package androidapp.yashthaluri.com.yeoman.Activities;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.cardview.widget.CardView;
 import androidx.databinding.DataBindingUtil;
 
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
@@ -21,8 +18,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import androidapp.yashthaluri.com.yeoman.Models.ProfileHelper;
+import androidapp.yashthaluri.com.yeoman.R;
 import androidapp.yashthaluri.com.yeoman.databinding.ActivityMainBinding;
-import androidapp.yashthaluri.com.yeoman.databinding.ActivityProfileBinding;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -35,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = DataBindingUtil.setContentView(this,R.layout.activity_main);
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
 
         auth = FirebaseAuth.getInstance();
         user = auth.getCurrentUser();
@@ -47,6 +45,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(MainActivity.this, EditProfileDetailActivity.class);
+                startActivity(i);
+            }
+        });
+
+        binding.bookLabour.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(MainActivity.this, BookActivity.class);
                 startActivity(i);
             }
         });

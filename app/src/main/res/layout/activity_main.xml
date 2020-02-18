@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:orientation="vertical"
         android:layout_height="match_parent"
-        tools:context=".MainActivity">
+        tools:context=".Activities.MainActivity">
 
 
         <RelativeLayout
@@ -102,8 +102,14 @@
                             android:layout_height="100dp"
                             android:layout_margin="10dp"
                             app:cardElevation="4dp"
-                            app:cardCornerRadius="10dp">
+                            app:cardCornerRadius="10dp"
+                            android:id="@+id/bookLabour">
 
+                            <ImageView
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
+                                android:layout_margin="25dp"
+                                android:src="@drawable/iconlabour" />
 
                         </androidx.cardview.widget.CardView>
 

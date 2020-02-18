@@ -1,4 +1,4 @@
-package androidapp.yashthaluri.com.yeoman;
+package androidapp.yashthaluri.com.yeoman.Models;
 
 public class ProfileHelper
 {

@@ -33,6 +33,10 @@
     <string name="userrole">Role (cannot be changed in future)</string>
     <string name="fullname">Name</string>
     <string name="aadhar">AadharNumber</string>
+    <string name="search">Search</string>
+    <string name="Select_date">Select Date</string>
+    <string name="Book">Book</string>
+    <string name="name">Mnaikyapavan</string>
     <string-array name="userroles">
         <item>Select</item>
         <item>Farmer</item>
@@ -44,6 +48,15 @@
         <item>Male</item>
         <item>Female</item>
         <item>Others</item>
-    </string-array>I agree to receive exclusive offers, news and
+    </string-array>
+    <string-array name="VillageNames">
+        <item>Select Village Name</item>
+        <item>prathipadu</item>
+        <item>Jaggampeta</item>
+        <item>Kakinada</item>
+        <item>Rajamundry</item>
+        <item>Tuni</item>
+    </string-array>
+    I agree to receive exclusive offers, news and
     promotional material about ACUVUE produc
 </resources>
