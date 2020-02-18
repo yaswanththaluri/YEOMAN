@@ -84,5 +84,12 @@ public class DetailWorkersShowActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
         data();
+        detailWorkerModels.clear();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        detailWorkerModels.clear();
     }
 }
