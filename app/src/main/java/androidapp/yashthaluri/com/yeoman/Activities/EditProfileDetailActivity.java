@@ -58,6 +58,8 @@ public class EditProfileDetailActivity extends AppCompatActivity {
     private final int PICK_IMAGE_REQUEST = 71;
     private FirebaseStorage storage;
     private StorageReference reference;
+    private String empType;
+    private String unsType;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -206,7 +208,7 @@ public class EditProfileDetailActivity extends AppCompatActivity {
 
         try
         {
-            ProfileHelper helper = new ProfileHelper(fullName, "user", aadhar, gender, address, city, state, pinCode, aaharURL, "yes", "no", "english");
+            ProfileHelper helper = new ProfileHelper(fullName, "user", aadhar, gender, address, city, state, pinCode, aaharURL, "yes", "no", "english", empType, unsType);
             databaseReference.child("users").child(user.getUid()).setValue(helper);
         }
         catch (Exception e)
@@ -237,6 +239,8 @@ public class EditProfileDetailActivity extends AppCompatActivity {
                 binding.city.setText(helper.getVillage());
                 binding.state.setText(helper.getState());
                 binding.AadharNumber.setText(helper.getAadharNo());
+                empType = helper.getEmpType();
+                unsType = helper.getUnSkilledType();
             }
 
             @Override

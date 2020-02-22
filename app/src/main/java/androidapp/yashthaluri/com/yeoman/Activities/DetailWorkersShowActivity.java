@@ -34,6 +34,8 @@ public class DetailWorkersShowActivity extends AppCompatActivity {
     private FirebaseDatabase database;
     private DatabaseReference reference;
     private String villageName;
+    private String empType;
+    private String unsType;
 
 
     @Override
@@ -43,7 +45,8 @@ public class DetailWorkersShowActivity extends AppCompatActivity {
 
         Bundle bundle = getIntent().getExtras();
         villageName = bundle.getString("villageName");
-
+        empType = bundle.getString("employementType");
+        unsType = bundle.getString("unskilledType");
         binding.detailRecyclerview.setHasFixedSize(true);
         binding.detailRecyclerview.setLayoutManager(new GridLayoutManager(this,2));
         detailsWorkerAdapter= new DetailsWorkerAdapter(detailWorkerModels, this);
@@ -57,15 +60,17 @@ public class DetailWorkersShowActivity extends AppCompatActivity {
 
     private void data() {
         Log.i("village name selecte", villageName);
+        Log.i("empType" , empType);
+        Log.i("unsType", unsType);
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for(DataSnapshot ds : dataSnapshot.getChildren())
                 {
                     ProfileHelper helper = ds.getValue(ProfileHelper.class);
-                    if (helper.getVillage().equals(villageName) && helper.getRole().equals("Labour"))
+                    if (helper.getVillage().equals(villageName) && helper.getRole().equals("Labour") && helper.getEmpType().equals(empType) && helper.getUnSkilledType().equals(unsType))
                     {
-                        Log.i("user", helper.getUserName());
+                        Log.i("user selected ===", helper.getUserName());
                         detailWorkerModels.add(new DetailWorkerModel(R.drawable.leaf,helper.getUserName(),"Farming,Cropping,","4.7"));
                         binding.detailRecyclerview.setAdapter(detailsWorkerAdapter);
                     }

@@ -39,11 +39,33 @@
             android:layout_marginTop="50dp"
             android:layout_centerHorizontal="true" />
 
+        <Spinner
+            android:id="@+id/selectEmpType"
+            style="@style/form_edit_text_style"
+            android:layout_width="300dp"
+            android:layout_height="45dp"
+            android:background="@drawable/spinner_background"
+            android:entries="@array/empTypes"
+            android:layout_below="@id/select_village"
+            android:layout_marginTop="50dp"
+            android:layout_centerHorizontal="true" />
+
+        <Spinner
+            android:id="@+id/unsType"
+            style="@style/form_edit_text_style"
+            android:layout_width="300dp"
+            android:layout_height="45dp"
+            android:background="@drawable/spinner_background"
+            android:entries="@array/unskilledTypes"
+            android:layout_below="@id/selectEmpType"
+            android:layout_marginTop="50dp"
+            android:layout_centerHorizontal="true" />
+
         <TextView
             android:gravity="center_vertical"
             android:textSize="20sp"
             android:id="@+id/select_date"
-            android:layout_below="@id/select_village"
+            android:layout_below="@id/unsType"
             style="@style/form_edit_text_style"
             android:layout_width="300dp"
             android:layout_marginTop="50dp"

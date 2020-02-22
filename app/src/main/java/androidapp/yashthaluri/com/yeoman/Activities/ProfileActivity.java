@@ -212,16 +212,23 @@ public class ProfileActivity extends AppCompatActivity {
         String aadhar = binding.AadharNumber.getText().toString();
         String gender = binding.gender.getSelectedItem().toString();
         String dob = binding.dob.getText().toString();
+        String role = binding.role.getSelectedItem().toString();
+        String empType = "None";
+        if (role.equals("Labour"))
+            empType = binding.employementType.getSelectedItem().toString();
+        String unsType = "None";
+        if (empType.equals("Unskilled Labour"))
+            unsType = binding.unskilledType.getSelectedItem().toString();
         String pinCode = binding.pinCode.getText().toString();
         String address = binding.address.getText().toString();
         String city = binding.city.getText().toString();
         String state = binding.state.getText().toString();
         String aaharURL = "www.none.com";
-        String role = binding.role.getSelectedItem().toString();
+
 
         try
         {
-            ProfileHelper helper = new ProfileHelper(fullName, role, aadhar, gender, address, city, state, pinCode, aaharURL, "yes", "no", "english");
+            ProfileHelper helper = new ProfileHelper(fullName, role, aadhar, gender, address, city, state, pinCode, aaharURL, "yes", "no", "english", empType, unsType);
             databaseReference.child("users").child(user.getUid()).setValue(helper);
         }
         catch (Exception e)

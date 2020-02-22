@@ -11,6 +11,8 @@ public class ProfileHelper
     private String state;
     private String zipCode;
     private String aadharFileLink;
+    private String empType;
+    private String unSkilledType;
     private String isProfileFilled;
     private String isProfileVerified;
     private String lang;
@@ -20,7 +22,7 @@ public class ProfileHelper
 
     }
 
-    public ProfileHelper(String userName, String role, String aadharNo, String gender, String address, String village, String state, String zipCode, String aadharFileLink, String isProfileFilled, String isProfileVerified, String lang)
+    public ProfileHelper(String userName, String role, String aadharNo, String gender, String address, String village, String state, String zipCode, String aadharFileLink, String isProfileFilled, String isProfileVerified, String lang, String empType, String unSkilledType)
     {
         this.userName = userName;
         this.role = role;
@@ -34,6 +36,24 @@ public class ProfileHelper
         this.isProfileFilled = isProfileFilled;
         this.isProfileVerified = isProfileVerified;
         this.lang = lang;
+        this.empType = empType;
+        this.unSkilledType = unSkilledType;
+    }
+
+    public String getEmpType() {
+        return empType;
+    }
+
+    public void setEmpType(String empType) {
+        this.empType = empType;
+    }
+
+    public String getUnSkilledType() {
+        return unSkilledType;
+    }
+
+    public void setUnSkilledType(String unSkilledType) {
+        this.unSkilledType = unSkilledType;
     }
 
     public String getAadharFileLink() {

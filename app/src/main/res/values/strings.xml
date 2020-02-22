@@ -31,6 +31,8 @@
     <string name="PinCode">pincode</string>
     <string name="village">Village</string>
     <string name="userrole">Role (cannot be changed in future)</string>
+    <string name="empType">Employement Type</string>
+    <string name="unskilledType">Unskilled Type</string>
     <string name="fullname">Name</string>
     <string name="aadhar">AadharNumber</string>
     <string name="search">Search</string>
@@ -43,6 +45,21 @@
         <item>Labour</item>
         <item>Village Admin</item>
     </string-array>
+
+    <string-array name="empTypes">
+        <item>Skilled Labour</item>
+        <item>Unskilled Labour</item>
+    </string-array>
+
+    <string-array name="unskilledTypes">
+        <item>Ploughing</item>
+        <item>Sowing seed</item>
+        <item>Weeding</item>
+        <item>Ginning</item>
+        <item>Showeling-palm</item>
+        <item>Others</item>
+    </string-array>
+
     <string-array name="gender">
         <item>Select</item>
         <item>Male</item>

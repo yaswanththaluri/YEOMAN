@@ -95,6 +95,64 @@
                         style="@style/form_text_view"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:text="@string/empType" />
+
+                    <TextView
+                        style="@style/form_esterik"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="1dp"
+                        android:text="*" />
+
+                </LinearLayout>
+
+                <Spinner
+                    android:id="@+id/employementType"
+                    style="@style/form_edit_text_style"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:background="@drawable/spinner_background"
+                    android:entries="@array/empTypes" />
+
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        style="@style/form_text_view"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/unskilledType" />
+
+                    <TextView
+                        style="@style/form_esterik"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="1dp"
+                        android:text="*" />
+
+                </LinearLayout>
+
+                <Spinner
+                    android:id="@+id/unskilledType"
+                    style="@style/form_edit_text_style"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:background="@drawable/spinner_background"
+                    android:entries="@array/unskilledTypes" />
+
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        style="@style/form_text_view"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:text="@string/gender" />
 
                     <TextView

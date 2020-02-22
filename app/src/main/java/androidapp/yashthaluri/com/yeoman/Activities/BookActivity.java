@@ -43,6 +43,9 @@ public class BookActivity extends AppCompatActivity {
     private List<String> categories;
     private Spinner spinner;
     private ArrayAdapter<String> dataAdapter;
+    private String empTypeFilter="None";
+    private String unsTypeFilter="None";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,6 +62,7 @@ public class BookActivity extends AppCompatActivity {
         database = FirebaseDatabase.getInstance();
         databaseReference = database.getReference().child("users");
 
+
         categories = new ArrayList<String>();
 
         binding.Search.setOnClickListener(new View.OnClickListener() {
@@ -66,11 +70,18 @@ public class BookActivity extends AppCompatActivity {
             public void onClick(View view) {
                 String village = binding.selectVillage.getSelectedItem().toString();
                 String date = binding.selectDate.getText().toString();
+                empTypeFilter = binding.selectEmpType.getSelectedItem().toString();
+                if(empTypeFilter.equals("Unskilled Labour"))
+                    unsTypeFilter = binding.unsType.getSelectedItem().toString();
+                else
+                    unsTypeFilter = "None";
                 if (village!=null && date!=null)
                 {
                     Intent i = new Intent(BookActivity.this, DetailWorkersShowActivity.class);
                     i.putExtra("villageName", village);
                     i.putExtra("bookingDate", date);
+                    i.putExtra("employementType", empTypeFilter);
+                    i.putExtra("unskilledType", unsTypeFilter);
                     startActivity(i);
                 }
             }
