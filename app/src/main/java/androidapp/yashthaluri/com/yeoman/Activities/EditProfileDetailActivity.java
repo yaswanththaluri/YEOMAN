@@ -60,6 +60,7 @@ public class EditProfileDetailActivity extends AppCompatActivity {
     private StorageReference reference;
     private String empType;
     private String unsType;
+    private String absNo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -208,7 +209,7 @@ public class EditProfileDetailActivity extends AppCompatActivity {
 
         try
         {
-            ProfileHelper helper = new ProfileHelper(fullName, "user", aadhar, gender, address, city, state, pinCode, aaharURL, "yes", "no", "english", empType, unsType);
+            ProfileHelper helper = new ProfileHelper(fullName, "user", aadhar, gender, address, city, state, pinCode, aaharURL, "yes", "no", "english", empType, unsType, absNo);
             databaseReference.child("users").child(user.getUid()).setValue(helper);
         }
         catch (Exception e)
@@ -241,6 +242,7 @@ public class EditProfileDetailActivity extends AppCompatActivity {
                 binding.AadharNumber.setText(helper.getAadharNo());
                 empType = helper.getEmpType();
                 unsType = helper.getUnSkilledType();
+                absNo = helper.getNoAbsentees();
             }
 
             @Override

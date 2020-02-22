@@ -36,6 +36,7 @@ public class DetailWorkersShowActivity extends AppCompatActivity {
     private String villageName;
     private String empType;
     private String unsType;
+    private String date;
 
 
     @Override
@@ -47,6 +48,7 @@ public class DetailWorkersShowActivity extends AppCompatActivity {
         villageName = bundle.getString("villageName");
         empType = bundle.getString("employementType");
         unsType = bundle.getString("unskilledType");
+        date = bundle.getString("searchDate");
         binding.detailRecyclerview.setHasFixedSize(true);
         binding.detailRecyclerview.setLayoutManager(new GridLayoutManager(this,2));
         detailsWorkerAdapter= new DetailsWorkerAdapter(detailWorkerModels, this);
@@ -71,7 +73,7 @@ public class DetailWorkersShowActivity extends AppCompatActivity {
                     if (helper.getVillage().equals(villageName) && helper.getRole().equals("Labour") && helper.getEmpType().equals(empType) && helper.getUnSkilledType().equals(unsType))
                     {
                         Log.i("user selected ===", helper.getUserName());
-                        detailWorkerModels.add(new DetailWorkerModel(R.drawable.leaf,helper.getUserName(),"Farming,Cropping,","4.7"));
+                        detailWorkerModels.add(new DetailWorkerModel(R.drawable.leaf,helper.getUserName(),"Farming,Cropping,","4.7", ds.getKey(), date));
                         binding.detailRecyclerview.setAdapter(detailsWorkerAdapter);
                     }
                 }

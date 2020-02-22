@@ -2,13 +2,15 @@ package androidapp.yashthaluri.com.yeoman.Models;
 
 public class DetailWorkerModel {
     int bitmap;
-    String name,skills,rating;
+    String name,skills,rating, uid, searchedDate;
 
-    public DetailWorkerModel(int bitmap, String name, String skills, String rating) {
+    public DetailWorkerModel(int bitmap, String name, String skills, String rating, String uid, String searchedDate) {
         this.bitmap = bitmap;
         this.name = name;
         this.skills = skills;
         this.rating = rating;
+        this.uid = uid;
+        this.searchedDate = searchedDate;
     }
 
     public int getBitmap() {
@@ -41,5 +43,21 @@ public class DetailWorkerModel {
 
     public void setRating(String rating) {
         this.rating = rating;
+    }
+
+    public String getUid() {
+        return uid;
+    }
+
+    public void setUid(String uid) {
+        this.uid = uid;
+    }
+
+    public String getSearchedDate() {
+        return searchedDate;
+    }
+
+    public void setSearchedDate(String searchedDate) {
+        this.searchedDate = searchedDate;
     }
 }

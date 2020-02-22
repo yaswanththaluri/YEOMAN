@@ -79,7 +79,7 @@ public class BookActivity extends AppCompatActivity {
                 {
                     Intent i = new Intent(BookActivity.this, DetailWorkersShowActivity.class);
                     i.putExtra("villageName", village);
-                    i.putExtra("bookingDate", date);
+                    i.putExtra("searchDate", date);
                     i.putExtra("employementType", empTypeFilter);
                     i.putExtra("unskilledType", unsTypeFilter);
                     startActivity(i);
