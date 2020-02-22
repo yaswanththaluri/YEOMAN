@@ -29,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
     ActivityMainBinding binding;
     private FirebaseDatabase database;
     private DatabaseReference reference;
+    private String role="";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,8 +53,24 @@ public class MainActivity extends AppCompatActivity {
         binding.bookLabour.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(MainActivity.this, BookActivity.class);
-                startActivity(i);
+                if (role.equals("Labour"))
+                {
+                    Intent i = new Intent(MainActivity.this, MarkAbsentActivity.class);
+                    startActivity(i);
+                }
+                else if (role.equals("Farmer"))
+                {
+                    Intent i = new Intent(MainActivity.this, BookActivity.class);
+                    startActivity(i);
+                }
+            }
+        });
+
+        binding.logoutUser.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                auth.signOut();
+                finishAffinity();
             }
         });
     }
@@ -71,6 +88,15 @@ public class MainActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 ProfileHelper helper = dataSnapshot.getValue(ProfileHelper.class);
                 binding.dshbrdProfileName.setText(helper.getUserName());
+                role = helper.getRole();
+                if (role.equals("Labour"))
+                {
+                    binding.card2Img.setImageResource(R.drawable.iconabsent);
+                }
+                else if (role.equals("Farmer"))
+                {
+                    binding.card2Img.setImageResource(R.drawable.iconlabour);
+                }
             }
 
             @Override

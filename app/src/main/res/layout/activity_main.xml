@@ -109,7 +109,7 @@
                                 android:layout_width="50dp"
                                 android:layout_height="50dp"
                                 android:layout_margin="25dp"
-                                android:src="@drawable/iconlabour" />
+                                android:id="@+id/card2Img"/>
 
                         </androidx.cardview.widget.CardView>
 
@@ -134,9 +134,16 @@
                             android:layout_width="100dp"
                             android:layout_height="100dp"
                             android:layout_margin="10dp"
+                            android:id="@+id/myBookings"
                             app:cardElevation="4dp"
                             app:cardCornerRadius="10dp">
 
+                            <ImageView
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
+                                android:layout_margin="25dp"
+                                android:src="@drawable/iconbookings"
+                                android:id="@+id/card3Img"/>
 
                         </androidx.cardview.widget.CardView>
 
@@ -200,7 +207,15 @@
                             android:layout_height="100dp"
                             android:layout_margin="10dp"
                             app:cardElevation="4dp"
+                            android:id="@+id/logoutUser"
                             app:cardCornerRadius="10dp">
+
+                            <ImageView
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
+                                android:layout_margin="25dp"
+                                android:src="@drawable/iconlogout"
+                                android:id="@+id/card6Img"/>
 
 
                         </androidx.cardview.widget.CardView>

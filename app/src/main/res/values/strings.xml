@@ -74,6 +74,12 @@
         <item>Rajamundry</item>
         <item>Tuni</item>
     </string-array>
+
+
+
+    <string name="absActTitle">Apply for Leave</string>
+    <string name="applyLeaveButton">Apply Leave</string>
+
     I agree to receive exclusive offers, news and
     promotional material about ACUVUE produc
 </resources>
