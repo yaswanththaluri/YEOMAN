@@ -7,59 +7,88 @@
 
     </data>
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".Activities.MarkAbsentActivity">
+        android:orientation="vertical">
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="2"
+            tools:context=".Activities.MarkAbsentActivity">
+
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_centerInParent="true">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/absActTitle"
+                    android:id="@+id/yeoman_text"
+                    android:textAlignment="center"
+                    android:layout_gravity="center"
+                    android:textStyle="bold"
+                    android:textAllCaps="true"
+                    android:textSize="25dp"
+                    android:layout_centerHorizontal="true" />
+
+                <TextView
+                    android:gravity="center_vertical"
+                    android:textSize="20sp"
+                    android:id="@+id/select_date"
+                    style="@style/form_edit_text_style"
+                    android:layout_width="300dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="50dp"
+                    android:text="@string/Select_date"
+                    android:layout_centerHorizontal="true"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/form_edit_text"
+                    android:drawableRight="@drawable/calender_icon"
+                    android:paddingRight="15dp" />
+
+                <Button
+                    android:id="@+id/applyLeave"
+                    android:layout_width="250dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:background="#53714B"
+                    android:padding="20dp"
+                    android:layout_marginTop="50dp"
+                    android:layout_below="@id/select_date"
+                    android:layout_centerHorizontal="true"
+                    android:textAllCaps="false"
+                    android:text="@string/applyLeaveButton"
+                    android:textColor="@android:color/white" />
+
+            </LinearLayout>
+
+
+        </RelativeLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:orientation="vertical"
-            android:layout_centerInParent="true">
+            android:layout_weight="3">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/absActTitle"
-                android:id="@+id/yeoman_text"
-                android:textAlignment="center"
-                android:layout_gravity="center"
-                android:textStyle="bold"
-                android:textAllCaps="true"
-                android:textSize="25dp"
-                android:layout_centerHorizontal="true" />
-
-            <TextView
-                android:gravity="center_vertical"
-                android:textSize="20sp"
-                android:id="@+id/select_date"
-                style="@style/form_edit_text_style"
-                android:layout_width="300dp"
-                android:layout_gravity="center"
-                android:layout_marginTop="50dp"
-                android:text="@string/Select_date"
-                android:layout_centerHorizontal="true"
-                android:layout_height="wrap_content"
-                android:background="@drawable/form_edit_text"
-                android:drawableRight="@drawable/calender_icon"
-                android:paddingRight="15dp" />
-
-            <Button
-                android:id="@+id/applyLeave"
-                android:layout_width="250dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:background="#53714B"
-                android:padding="20dp"
-                android:layout_marginTop="50dp"
-                android:layout_below="@id/select_date"
-                android:layout_centerHorizontal="true"
-                android:textAllCaps="false"
-                android:text="@string/applyLeaveButton"
-                android:textColor="@android:color/white" />
+            <ListView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:overScrollMode="always"
+                android:id="@+id/absList" />
 
         </LinearLayout>
 
-    </RelativeLayout>
+
+    </LinearLayout>
+
 </layout>

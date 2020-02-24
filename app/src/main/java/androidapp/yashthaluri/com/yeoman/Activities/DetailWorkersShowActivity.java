@@ -21,6 +21,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 
 import androidapp.yashthaluri.com.yeoman.Adapter.DetailsWorkerAdapter;
+import androidapp.yashthaluri.com.yeoman.Models.BookJobHelper;
 import androidapp.yashthaluri.com.yeoman.Models.DetailWorkerModel;
 import androidapp.yashthaluri.com.yeoman.Models.ProfileHelper;
 import androidapp.yashthaluri.com.yeoman.R;
@@ -48,7 +49,7 @@ public class DetailWorkersShowActivity extends AppCompatActivity {
         villageName = bundle.getString("villageName");
         empType = bundle.getString("employementType");
         unsType = bundle.getString("unskilledType");
-        date = bundle.getString("searchDate");
+        date = bundle.getString("searchDate").replace(" ", "");
         binding.detailRecyclerview.setHasFixedSize(true);
         binding.detailRecyclerview.setLayoutManager(new GridLayoutManager(this,2));
         detailsWorkerAdapter= new DetailsWorkerAdapter(detailWorkerModels, this);
@@ -73,10 +74,96 @@ public class DetailWorkersShowActivity extends AppCompatActivity {
                     if (helper.getVillage().equals(villageName) && helper.getRole().equals("Labour") && helper.getEmpType().equals(empType) && helper.getUnSkilledType().equals(unsType))
                     {
                         Log.i("user selected ===", helper.getUserName());
-                        detailWorkerModels.add(new DetailWorkerModel(R.drawable.leaf,helper.getUserName(),"Farming,Cropping,","4.7", ds.getKey(), date));
-                        binding.detailRecyclerview.setAdapter(detailsWorkerAdapter);
+//                        detailWorkerModels.add(new DetailWorkerModel(R.drawable.leaf,helper.getUserName(),"Farming,Cropping,","4.7", ds.getKey(), date));
+//                        binding.detailRecyclerview.setAdapter(detailsWorkerAdapter);
+                        checkLeaveStatus(ds.getKey(), date);
                     }
                 }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+    }
+
+
+    // Checking for Absent records
+    public void checkLeaveStatus(final String uid, final String date)
+    {
+        Log.i("Abs check", uid);
+        DatabaseReference reference = database.getReference().child("LeaveApplications").child(uid);
+        reference.addValueEventListener(
+                new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                        int temp = 0;
+                        for (DataSnapshot d : dataSnapshot.getChildren())
+                        {
+                            if (date.equals(d.getKey()))
+                            {
+                                temp = 1;
+                            }
+                        }
+                        if (temp==0)
+                            checkIsLabourFree(uid, date);
+
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                    }
+                }
+        );
+    }
+
+
+    // Checking if a Labour has particular job on that date
+    public void checkIsLabourFree(final String uid, final String date)
+    {
+        Log.i("lab check", uid);
+        DatabaseReference reference = database.getReference().child("labourJobs").child(uid);
+        reference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                int temp = 0;
+                for (DataSnapshot d: dataSnapshot.getChildren())
+                {
+                    BookJobHelper bookJobHelper = d.getValue(BookJobHelper.class);
+                    if (date.equals(bookJobHelper.getDate()))
+                    {
+                        temp = 1;
+                    }
+                }
+
+                if (temp == 0)
+                    filldata(uid);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+    }
+
+
+    // Populating data if all conditions satisfy
+    private void filldata(String uid) {
+        Log.i("final check", uid);
+        reference.child(uid).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                ProfileHelper helper = dataSnapshot.getValue(ProfileHelper.class);
+                detailWorkerModels.add(new DetailWorkerModel(R.drawable.leaf,helper.getUserName(),"Farming,Cropping,","4.7", dataSnapshot.getKey(), date));
+                binding.detailRecyclerview.setAdapter(detailsWorkerAdapter);
+
+
             }
 
             @Override

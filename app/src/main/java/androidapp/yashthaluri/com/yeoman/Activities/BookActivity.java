@@ -171,8 +171,5 @@ public class BookActivity extends AppCompatActivity {
 
             }
         });
-
-
-
     }
 }
