@@ -66,6 +66,14 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        binding.myBookings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(MainActivity.this, MyBookings.class);
+                startActivity(i);
+            }
+        });
+
         binding.logoutUser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

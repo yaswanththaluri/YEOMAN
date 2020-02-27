@@ -8,8 +8,10 @@ public class FarmerBookingHistoryHelper
     private String isBookingAccepted;
     private String workDesc;
     private String bookingDate;
+    private String phoneNumber;
+    private String imageUrl;
 
-    public FarmerBookingHistoryHelper(String labourName, String labourId, String attStatus, String isBookingAccepted, String workDesc, String bookingDate)
+    public FarmerBookingHistoryHelper(String labourName, String labourId, String attStatus, String isBookingAccepted, String workDesc, String bookingDate, String phoneNumber, String imageUrl)
     {
         this.labourId = labourId;
         this.labourName = labourName;
@@ -17,6 +19,8 @@ public class FarmerBookingHistoryHelper
         this.isBookingAccepted = isBookingAccepted;
         this.workDesc = workDesc;
         this.bookingDate = bookingDate;
+        this.phoneNumber = phoneNumber;
+        this.imageUrl = imageUrl;
     }
 
     public String getWorkDesc() {
@@ -33,6 +37,22 @@ public class FarmerBookingHistoryHelper
 
     public String getLabourId() {
         return labourId;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 
     public String getLabourName() {

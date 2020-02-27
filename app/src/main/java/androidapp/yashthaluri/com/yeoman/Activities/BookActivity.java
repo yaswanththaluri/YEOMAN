@@ -71,7 +71,7 @@ public class BookActivity extends AppCompatActivity {
                 String village = binding.selectVillage.getSelectedItem().toString();
                 String date = binding.selectDate.getText().toString();
                 empTypeFilter = binding.selectEmpType.getSelectedItem().toString();
-                if(empTypeFilter.equals("Unskilled Labour"))
+                if(empTypeFilter.equals("Unskilled Labour") || empTypeFilter.equals("Weekend Labour"))
                     unsTypeFilter = binding.unsType.getSelectedItem().toString();
                 else
                     unsTypeFilter = "None";

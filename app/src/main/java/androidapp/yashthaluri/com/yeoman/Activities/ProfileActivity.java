@@ -228,7 +228,7 @@ public class ProfileActivity extends AppCompatActivity {
 
         try
         {
-            ProfileHelper helper = new ProfileHelper(fullName, role, aadhar, gender, address, city, state, pinCode, aaharURL, "yes", "no", "english", empType, unsType, "0");
+            ProfileHelper helper = new ProfileHelper(fullName, role, aadhar, gender, address, city, state, pinCode, aaharURL, "yes", "no", "english", empType, unsType, "0", user.getPhoneNumber(), "www.noneImg.com");
             databaseReference.child("users").child(user.getUid()).setValue(helper);
         }
         catch (Exception e)

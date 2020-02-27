@@ -92,11 +92,11 @@ public class DetailsWorkerAdapter extends RecyclerView.Adapter<DetailsWorkerAdap
                         @Override
                         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                             ProfileHelper profileHelper = dataSnapshot.getValue(ProfileHelper.class);
-                            BookJobHelper helper = new BookJobHelper(profileHelper.getUserName(), ""+detailWorkerModel.getSearchedDate(), "Pending", "Pending", "Note");
+                            BookJobHelper helper = new BookJobHelper(profileHelper.getUserName(), ""+detailWorkerModel.getSearchedDate(), "Pending", "Pending", "Note", profileHelper.getPhoneNumber(), profileHelper.getPhotoURL());
 
                             reference.child("labourJobs").child(detailWorkerModel.getUid()).push().setValue(helper);
 
-                            FarmerBookingHistoryHelper farmerBookingHistoryHelper = new FarmerBookingHistoryHelper(detailWorkerModel.getName(), detailWorkerModel.getUid(), "Not marked", "Pending", "Note", detailWorkerModel.getSearchedDate());
+                            FarmerBookingHistoryHelper farmerBookingHistoryHelper = new FarmerBookingHistoryHelper(detailWorkerModel.getName(), detailWorkerModel.getUid(), "Not marked", "Pending", "Note", detailWorkerModel.getSearchedDate(), FirebaseAuth.getInstance().getCurrentUser().getPhoneNumber(), ""+FirebaseAuth.getInstance().getCurrentUser().getPhotoUrl());
                             reference.child("FarmerBookings").child(FirebaseAuth.getInstance().getUid()).push().setValue(farmerBookingHistoryHelper);
                         }
 

@@ -17,13 +17,15 @@ public class ProfileHelper
     private String isProfileVerified;
     private String lang;
     private String noAbsentees;
+    private String phoneNumber;
+    private String photoURL;
 
     public ProfileHelper()
     {
 
     }
 
-    public ProfileHelper(String userName, String role, String aadharNo, String gender, String address, String village, String state, String zipCode, String aadharFileLink, String isProfileFilled, String isProfileVerified, String lang, String empType, String unSkilledType, String noAbsentees)
+    public ProfileHelper(String userName, String role, String aadharNo, String gender, String address, String village, String state, String zipCode, String aadharFileLink, String isProfileFilled, String isProfileVerified, String lang, String empType, String unSkilledType, String noAbsentees, String phoneNumber, String photoURL)
     {
         this.userName = userName;
         this.role = role;
@@ -40,10 +42,28 @@ public class ProfileHelper
         this.empType = empType;
         this.unSkilledType = unSkilledType;
         this.noAbsentees = noAbsentees;
+        this.phoneNumber = phoneNumber;
+        this.photoURL = photoURL;
     }
 
     public String getEmpType() {
         return empType;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public String getPhotoURL() {
+        return photoURL;
+    }
+
+    public void setPhotoURL(String photoURL) {
+        this.photoURL = photoURL;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 
     public void setEmpType(String empType) {

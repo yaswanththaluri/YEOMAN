@@ -6,19 +6,23 @@ public class BookJobHelper {
     private String attStatus;
     private String acceptanceStatus;
     private String workDesc;
+    private String phoneNumber;
+    private String imageUrl;
 
     public BookJobHelper()
     {
 
     }
 
-    public BookJobHelper(String farmerName, String date, String attStatus, String acceptanceStatus, String workDesc)
+    public BookJobHelper(String farmerName, String date, String attStatus, String acceptanceStatus, String workDesc, String phoneNumber, String imageUrl)
     {
         this.farmerName = farmerName;
         this.date = date;
         this.attStatus = attStatus;
         this.acceptanceStatus = acceptanceStatus;
         this.workDesc = workDesc;
+        this.phoneNumber = phoneNumber;
+        this.imageUrl = imageUrl;
     }
 
     public String getDate() {
@@ -35,6 +39,22 @@ public class BookJobHelper {
 
     public void setAttStatus(String attStatus) {
         this.attStatus = attStatus;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 
     public String getFarmerName() {

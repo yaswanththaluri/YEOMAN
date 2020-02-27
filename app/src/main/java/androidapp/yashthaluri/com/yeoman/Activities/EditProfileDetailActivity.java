@@ -209,7 +209,7 @@ public class EditProfileDetailActivity extends AppCompatActivity {
 
         try
         {
-            ProfileHelper helper = new ProfileHelper(fullName, "user", aadhar, gender, address, city, state, pinCode, aaharURL, "yes", "no", "english", empType, unsType, absNo);
+            ProfileHelper helper = new ProfileHelper(fullName, "user", aadhar, gender, address, city, state, pinCode, aaharURL, "yes", "no", "english", empType, unsType, absNo, user.getPhoneNumber(), "www.noneImg.com");
             databaseReference.child("users").child(user.getUid()).setValue(helper);
         }
         catch (Exception e)
