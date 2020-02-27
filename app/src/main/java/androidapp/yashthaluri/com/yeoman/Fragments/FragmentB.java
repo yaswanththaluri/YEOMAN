@@ -27,21 +27,16 @@ public class FragmentB extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment, container, false);
+      //  View view = inflater.inflate(R.layout.fragment_fragment_b, container, false);
 
 
-        return view;
+        return null;
     }
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        String[] items = getResources().getStringArray(R.array.tab_A);
-        RecyclerViewAdapter adapter = new RecyclerViewAdapter(items);
-        recyclerView = (RecyclerView) view.findViewById(R.id.recycler_view);
-        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
-        recyclerView.setLayoutManager(layoutManager);
-        recyclerView.setAdapter(adapter);
+
 
     }
 }
