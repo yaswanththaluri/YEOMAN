@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.DatePicker;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -21,10 +22,12 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import androidapp.yashthaluri.com.yeoman.Models.ProfileHelper;
@@ -37,6 +40,7 @@ public class BookActivity extends AppCompatActivity {
     private SimpleDateFormat simpleDateFormat;
     private int year, month, day;
     private FirebaseAuth auth;
+    private String rawDate;
     private FirebaseUser user;
     private FirebaseDatabase database;
     private DatabaseReference databaseReference;
@@ -71,11 +75,24 @@ public class BookActivity extends AppCompatActivity {
                 String village = binding.selectVillage.getSelectedItem().toString();
                 String date = binding.selectDate.getText().toString();
                 empTypeFilter = binding.selectEmpType.getSelectedItem().toString();
-                if(empTypeFilter.equals("Unskilled Labour") || empTypeFilter.equals("Weekend Labour"))
+                if(empTypeFilter.equals("Unskilled Labour"))
                     unsTypeFilter = binding.unsType.getSelectedItem().toString();
                 else
                     unsTypeFilter = "None";
-                if (village!=null && date!=null)
+                SimpleDateFormat formatter=new SimpleDateFormat("dd/MM/yyyy");
+                Date selectedDate = null;
+                try {
+                   selectedDate = formatter.parse(date);
+                } catch (ParseException e) {
+                    Toast.makeText(BookActivity.this, "All fields are mandatory.", Toast.LENGTH_SHORT).show();
+                }
+                Log.i("selected date", ""+selectedDate);
+                Log.i("New date ", ""+new Date());
+                if (selectedDate.before(new Date()))
+                {
+                    Toast.makeText(BookActivity.this, "Date should not be in past.", Toast.LENGTH_SHORT).show();
+                }
+                else if (village!=null && date!=null && !date.equals(""))
                 {
                     Intent i = new Intent(BookActivity.this, DetailWorkersShowActivity.class);
                     i.putExtra("villageName", village);
@@ -83,6 +100,10 @@ public class BookActivity extends AppCompatActivity {
                     i.putExtra("employementType", empTypeFilter);
                     i.putExtra("unskilledType", unsTypeFilter);
                     startActivity(i);
+                }
+                else
+                {
+                    Toast.makeText(BookActivity.this, "All fields are mandatory.", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -100,45 +121,47 @@ public class BookActivity extends AppCompatActivity {
 
                 switch (m + 1) {
                     case 1:
-                        binding.selectDate.setText(d + " Jan " + y);
+                        binding.selectDate.setText(d + "/01/" + y);
                         break;
                     case 2:
-                        binding.selectDate.setText(d + " Feb " + y);
+                        binding.selectDate.setText(d + "/02/" + y);
                         break;
                     case 3:
-                        binding.selectDate.setText(d + " March " + y);
+                        binding.selectDate.setText(d + "/03/" + y);
                         break;
                     case 4:
-                        binding.selectDate.setText(d + " April " + y);
+                        binding.selectDate.setText(d + "/04/" + y);
                         break;
                     case 5:
-                        binding.selectDate.setText(d + " May " + y);
+                        binding.selectDate.setText(d + "/05/" + y);
                         break;
                     case 6:
-                        binding.selectDate.setText(d + " June " + y);
+                        binding.selectDate.setText(d + "/06/" + y);
                         break;
                     case 7:
-                        binding.selectDate.setText(d + " July " + y);
+                        binding.selectDate.setText(d + "/07/" + y);
                         break;
                     case 8:
-                        binding.selectDate.setText(d + " Aug " + y);
+                        binding.selectDate.setText(d + "/08/" + y);
                         break;
                     case 9:
-                        binding.selectDate.setText(d + " Sep " + y);
+                        binding.selectDate.setText(d + "/09/" + y);
                         break;
                     case 10:
-                        binding.selectDate.setText(d + " Oct " + y);
+                        binding.selectDate.setText(d + "/10/" + y);
                         break;
                     case 11:
-                        binding.selectDate.setText(d + " Nov " + y);
+                        binding.selectDate.setText(d + "/11/" + y);
                         break;
                     case 12:
-                        binding.selectDate.setText(d + " Dec " + y);
+                        binding.selectDate.setText(d + "/12/" + y);
                         break;
                 }
             }
         }, year, month, day);
         dialog.show();
+
+        rawDate = ""+(day+1)+"/"+(month+1)+"/"+year;
     }
 
     @Override

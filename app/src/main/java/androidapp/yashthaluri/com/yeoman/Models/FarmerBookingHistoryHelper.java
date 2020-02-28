@@ -11,6 +11,11 @@ public class FarmerBookingHistoryHelper
     private String phoneNumber;
     private String imageUrl;
 
+    public FarmerBookingHistoryHelper()
+    {
+
+    }
+
     public FarmerBookingHistoryHelper(String labourName, String labourId, String attStatus, String isBookingAccepted, String workDesc, String bookingDate, String phoneNumber, String imageUrl)
     {
         this.labourId = labourId;

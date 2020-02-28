@@ -12,6 +12,16 @@
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
         <activity
+            android:name=".Activities.HelpActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".Activities.MarkAbsentActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".WeekendFarmerBooking"
+            android:screenOrientation="portrait" />
+        <activity
             android:name=".Activities.MyBookings"
             android:screenOrientation="portrait" />
         <activity

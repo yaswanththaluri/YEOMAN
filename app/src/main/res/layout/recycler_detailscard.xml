@@ -50,10 +50,6 @@
                 tools:text="1000 points"
                 android:layout_marginTop="15dp" />
 
-            <RelativeLayout
-                android:layout_width="373dp"
-                android:layout_height="wrap_content">
-
                 <RatingBar
                     android:id="@+id/rating_layout"
                     android:layout_width="wrap_content"
@@ -64,20 +60,6 @@
                     android:max="4"
                     android:scaleX=".5"
                     android:scaleY=".5" />
-
-                <TextView
-                    android:id="@+id/rating_text"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="15dp"
-
-                    android:layout_toRightOf="@id/rating_layout"
-
-                    tools:text="4.9" />
-
-
-            </RelativeLayout>
 
 
 
@@ -98,6 +80,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 style="@style/reward_add_BTN"
+                android:layout_gravity="center"
                 android:textSize="20dp"
                 android:text="@string/Book" />
 

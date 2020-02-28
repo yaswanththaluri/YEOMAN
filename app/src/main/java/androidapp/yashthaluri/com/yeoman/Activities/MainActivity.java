@@ -20,6 +20,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import androidapp.yashthaluri.com.yeoman.Models.ProfileHelper;
 import androidapp.yashthaluri.com.yeoman.R;
+import androidapp.yashthaluri.com.yeoman.WeekendFarmerBooking;
 import androidapp.yashthaluri.com.yeoman.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
@@ -81,6 +82,29 @@ public class MainActivity extends AppCompatActivity {
                 finishAffinity();
             }
         });
+
+        binding.card4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (role.equals("Farmer")) {
+                    Intent i = new Intent(MainActivity.this, WeekendFarmerBooking.class);
+                    startActivity(i);
+                }
+            }
+        });
+
+        binding.card5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(MainActivity.this, HelpActivity.class);
+                startActivity(i);
+            }
+        });
+
+        if (role.equals("Farmer"))
+        {
+            binding.card4Img.setVisibility(View.VISIBLE);
+        }
     }
 
     @Override

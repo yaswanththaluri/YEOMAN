@@ -161,8 +161,15 @@
                             android:layout_height="100dp"
                             android:layout_margin="10dp"
                             app:cardElevation="4dp"
+                            android:id="@+id/card4"
                             app:cardCornerRadius="10dp">
 
+                            <ImageView
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
+                                android:layout_margin="25dp"
+                                android:src="@drawable/iconbookings"
+                                android:id="@+id/card4Img"/>
 
                         </androidx.cardview.widget.CardView>
 
@@ -188,7 +195,15 @@
                             android:layout_height="100dp"
                             android:layout_margin="10dp"
                             app:cardElevation="4dp"
+                            android:id="@+id/card5"
                             app:cardCornerRadius="10dp">
+
+                            <ImageView
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
+                                android:layout_margin="25dp"
+                                android:src="@drawable/help"
+                                android:id="@+id/cardImg"/>
 
 
                         </androidx.cardview.widget.CardView>

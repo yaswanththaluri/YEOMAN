@@ -1,12 +1,16 @@
 package androidapp.yashthaluri.com.yeoman.Adapter;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -48,10 +52,9 @@ public class DetailsWorkerAdapter extends RecyclerView.Adapter<DetailsWorkerAdap
     @Override
     public void onBindViewHolder(@NonNull DetailWorkerViewHolder holder, int position) {
         currPos = position;
-        holder.detailImage.setImageResource(detailWorkerModels.get(position).getBitmap());
+        holder.detailImage.setImageURI(Uri.parse(detailWorkerModels.get(position).getBitmap()));
         holder.PersonName.setText(detailWorkerModels.get(position).getName());
         holder.PersonSkills.setText(detailWorkerModels.get(position).getSkills());
-        holder.PersonRating.setText(detailWorkerModels.get(position).getRating());
     }
 
     @Override
@@ -78,7 +81,6 @@ public class DetailsWorkerAdapter extends RecyclerView.Adapter<DetailsWorkerAdap
             detailImage = itemView.findViewById(R.id.detail_user_image);
             PersonName = itemView.findViewById(R.id.user_name);
             PersonSkills = itemView.findViewById(R.id.user_skillset);
-            PersonRating = itemView.findViewById(R.id.rating_text);
 
             Button b = itemView.findViewById(R.id.rewardAddToCartBTN);
 
@@ -94,10 +96,21 @@ public class DetailsWorkerAdapter extends RecyclerView.Adapter<DetailsWorkerAdap
                             ProfileHelper profileHelper = dataSnapshot.getValue(ProfileHelper.class);
                             BookJobHelper helper = new BookJobHelper(profileHelper.getUserName(), ""+detailWorkerModel.getSearchedDate(), "Pending", "Pending", "Note", profileHelper.getPhoneNumber(), profileHelper.getPhotoURL());
 
+
                             reference.child("labourJobs").child(detailWorkerModel.getUid()).push().setValue(helper);
 
                             FarmerBookingHistoryHelper farmerBookingHistoryHelper = new FarmerBookingHistoryHelper(detailWorkerModel.getName(), detailWorkerModel.getUid(), "Not marked", "Pending", "Note", detailWorkerModel.getSearchedDate(), FirebaseAuth.getInstance().getCurrentUser().getPhoneNumber(), ""+FirebaseAuth.getInstance().getCurrentUser().getPhotoUrl());
-                            reference.child("FarmerBookings").child(FirebaseAuth.getInstance().getUid()).push().setValue(farmerBookingHistoryHelper);
+                            if (detailWorkerModel.getRole().equals("Weekend Labour"))
+                            {
+                                reference.child("WeekendWorks").child(FirebaseAuth.getInstance().getUid()).push().setValue(farmerBookingHistoryHelper);
+                            }
+                            else
+                            {
+                                reference.child("FarmerBookings").child(FirebaseAuth.getInstance().getUid()).push().setValue(farmerBookingHistoryHelper);
+                            }
+
+                            Toast.makeText(context.getApplicationContext(), "Booking Success", Toast.LENGTH_SHORT).show();
+                            ((Activity)context).finish();
                         }
 
                         @Override

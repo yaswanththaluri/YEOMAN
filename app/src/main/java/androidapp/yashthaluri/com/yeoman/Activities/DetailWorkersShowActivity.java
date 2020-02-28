@@ -126,6 +126,7 @@ public class DetailWorkersShowActivity extends AppCompatActivity {
     public void checkIsLabourFree(final String uid, final String date)
     {
         Log.i("lab check", uid);
+
         DatabaseReference reference = database.getReference().child("labourJobs").child(uid);
         reference.addValueEventListener(new ValueEventListener() {
             @Override
@@ -149,7 +150,7 @@ public class DetailWorkersShowActivity extends AppCompatActivity {
 
             }
         });
-    }
+}
 
 
     // Populating data if all conditions satisfy
@@ -160,7 +161,7 @@ public class DetailWorkersShowActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
                 ProfileHelper helper = dataSnapshot.getValue(ProfileHelper.class);
-                detailWorkerModels.add(new DetailWorkerModel(R.drawable.leaf,helper.getUserName(),"Farming,Cropping,","4.7", dataSnapshot.getKey(), date));
+                detailWorkerModels.add(new DetailWorkerModel(helper.getPhotoURL() ,helper.getUserName(),"Farming,Cropping,","4.7", dataSnapshot.getKey(), date, helper.getEmpType()));
                 binding.detailRecyclerview.setAdapter(detailsWorkerAdapter);
 
 

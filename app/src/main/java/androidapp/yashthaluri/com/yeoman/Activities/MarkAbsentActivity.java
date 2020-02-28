@@ -21,9 +21,11 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 
 import androidapp.yashthaluri.com.yeoman.R;
 import androidapp.yashthaluri.com.yeoman.databinding.ActivityMarkAbsentBinding;
@@ -66,6 +68,18 @@ public class MarkAbsentActivity extends AppCompatActivity {
         binding.applyLeave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                SimpleDateFormat formatter=new SimpleDateFormat("dd/MM/yyyy");
+                Date selectedDate = null;
+                try {
+                    selectedDate = formatter.parse(binding.selectDate.getText().toString());
+                } catch (ParseException e) {
+                    Toast.makeText(MarkAbsentActivity.this, "All fields are mandatory.", Toast.LENGTH_SHORT).show();
+                }
+                if (selectedDate.before(new Date()))
+                {
+                    Toast.makeText(MarkAbsentActivity.this, "Date should not be in past.", Toast.LENGTH_SHORT).show();
+                }
+                else
                 applyForLeave(binding.selectDate.getText().toString().replace(" ", ""));
             }
         });
@@ -83,40 +97,40 @@ public class MarkAbsentActivity extends AppCompatActivity {
 
                 switch (m + 1) {
                     case 1:
-                        binding.selectDate.setText(d + " Jan " + y);
+                        binding.selectDate.setText(d + "/01/" + y);
                         break;
                     case 2:
-                        binding.selectDate.setText(d + " Feb " + y);
+                        binding.selectDate.setText(d + "/02/" + y);
                         break;
                     case 3:
-                        binding.selectDate.setText(d + " March " + y);
+                        binding.selectDate.setText(d + "/03/" + y);
                         break;
                     case 4:
-                        binding.selectDate.setText(d + " April " + y);
+                        binding.selectDate.setText(d + "/04/" + y);
                         break;
                     case 5:
-                        binding.selectDate.setText(d + " May " + y);
+                        binding.selectDate.setText(d + "/05/" + y);
                         break;
                     case 6:
-                        binding.selectDate.setText(d + " June " + y);
+                        binding.selectDate.setText(d + "/06/" + y);
                         break;
                     case 7:
-                        binding.selectDate.setText(d + " July " + y);
+                        binding.selectDate.setText(d + "/07/" + y);
                         break;
                     case 8:
-                        binding.selectDate.setText(d + " Aug " + y);
+                        binding.selectDate.setText(d + "/08/" + y);
                         break;
                     case 9:
-                        binding.selectDate.setText(d + " Sep " + y);
+                        binding.selectDate.setText(d + "/09/" + y);
                         break;
                     case 10:
-                        binding.selectDate.setText(d + " Oct " + y);
+                        binding.selectDate.setText(d + "/10/" + y);
                         break;
                     case 11:
-                        binding.selectDate.setText(d + " Nov " + y);
+                        binding.selectDate.setText(d + "/11/" + y);
                         break;
                     case 12:
-                        binding.selectDate.setText(d + " Dec " + y);
+                        binding.selectDate.setText(d + "/12/" + y);
                         break;
                 }
             }
@@ -127,7 +141,7 @@ public class MarkAbsentActivity extends AppCompatActivity {
 
     public void applyForLeave(String date)
     {
-        reference.child("LeaveApplications").child(user.getUid()).child(date).setValue("Absent");
+        reference.child("LeaveApplications").child(user.getUid()).child(date.replace('/', '-')).setValue("Absent");
         Toast.makeText(MarkAbsentActivity.this, "Leave Application success", Toast.LENGTH_SHORT).show();
         binding.selectDate.setText("");
     }

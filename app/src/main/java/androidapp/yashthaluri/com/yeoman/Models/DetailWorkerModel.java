@@ -1,24 +1,33 @@
 package androidapp.yashthaluri.com.yeoman.Models;
 
 public class DetailWorkerModel {
-    int bitmap;
+    String bitmap, role;
     String name,skills,rating, uid, searchedDate;
 
-    public DetailWorkerModel(int bitmap, String name, String skills, String rating, String uid, String searchedDate) {
+    public DetailWorkerModel(String bitmap, String name, String skills, String rating, String uid, String searchedDate, String role) {
         this.bitmap = bitmap;
         this.name = name;
         this.skills = skills;
         this.rating = rating;
+        this.role = role;
         this.uid = uid;
         this.searchedDate = searchedDate;
     }
 
-    public int getBitmap() {
+    public String getBitmap() {
         return bitmap;
     }
 
-    public void setBitmap(int bitmap) {
+    public void setBitmap(String bitmap) {
         this.bitmap = bitmap;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
     }
 
     public String getName() {

@@ -44,6 +44,10 @@
 
     <string name="unskilledType">Unskilled Type</string>
 
+    <string name="mailText">We are always with you. Please tell your problem, we will be doing what ever nesesary to over come your problem
+    \n please Mail us your problem to our mail
+    \n Our Representative will contact you.</string>
+
     <string-array name="userroles">
         <item>Select</item>
         <item>Farmer</item>
