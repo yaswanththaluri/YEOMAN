@@ -51,6 +51,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+
         binding.bookLabour.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -104,6 +105,7 @@ public class MainActivity extends AppCompatActivity {
         if (role.equals("Farmer"))
         {
             binding.card4Img.setVisibility(View.VISIBLE);
+            binding.card4text.setText("WL Bookings");
         }
     }
 
@@ -123,10 +125,12 @@ public class MainActivity extends AppCompatActivity {
                 role = helper.getRole();
                 if (role.equals("Labour"))
                 {
+                    binding.card2text.setText("Mark Absent");
                     binding.card2Img.setImageResource(R.drawable.iconabsent);
                 }
                 else if (role.equals("Farmer"))
                 {
+                    binding.card2text.setText("Book Labour");
                     binding.card2Img.setImageResource(R.drawable.iconlabour);
                 }
             }

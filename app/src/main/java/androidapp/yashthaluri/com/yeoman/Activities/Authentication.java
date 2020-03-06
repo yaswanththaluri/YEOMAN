@@ -59,6 +59,29 @@ public class Authentication extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
 
+        binding.submitOTP.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String otp = "";
+
+                otp+=binding.otpDig1.getText().toString();
+                otp+=binding.otpDig2.getText().toString();
+                otp+=binding.otpDig3.getText().toString();
+                otp+=binding.otpDig4.getText().toString();
+                otp+=binding.otpDig5.getText().toString();
+                otp+=binding.otpDig6.getText().toString();
+
+                if (otp.length()==6)
+                {
+                    verifyVerificationCode(otp);
+                }
+                else
+                {
+                    Toast.makeText(Authentication.this, "Please Enter Correct Code", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
         binding.getOTP.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

@@ -17,6 +17,7 @@ import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.DatePicker;
 import android.widget.LinearLayout;
 import android.widget.Toast;
@@ -58,7 +59,7 @@ public class EditProfileDetailActivity extends AppCompatActivity {
     private final int PICK_IMAGE_REQUEST = 71;
     private FirebaseStorage storage;
     private StorageReference reference;
-    private String empType;
+    private String empType, role;
     private String unsType;
     private String absNo;
 
@@ -84,6 +85,9 @@ public class EditProfileDetailActivity extends AppCompatActivity {
 
         storage = FirebaseStorage.getInstance();
         reference = storage.getReference();
+
+        binding.gender.setEnabled(false);
+        binding.gender.setClickable(false);
 
 
         binding.submitBTN1.setEnabled(false);
@@ -139,12 +143,16 @@ public class EditProfileDetailActivity extends AppCompatActivity {
                     binding.fabEdit.setImageResource(R.drawable.edit);
                     stopFocusForEditFields();
                     binding.submitBTN1.setVisibility(View.INVISIBLE);
+                    binding.gender.setEnabled(false);
+                    binding.gender.setClickable(false);
                 }
                 else
                 {
                     binding.fabEdit.setImageResource(R.drawable.canceledit);
                     showFocusForEditFields();
                     binding.submitBTN1.setVisibility(View.VISIBLE);
+                    binding.gender.setEnabled(true);
+                    binding.gender.setClickable(true);
                 }
                 editFabFlag= !editFabFlag;
             }
@@ -209,7 +217,7 @@ public class EditProfileDetailActivity extends AppCompatActivity {
 
         try
         {
-            ProfileHelper helper = new ProfileHelper(fullName, "user", aadhar, gender, address, city, state, pinCode, aaharURL, "yes", "no", "english", empType, unsType, absNo, user.getPhoneNumber(), "www.noneImg.com");
+            ProfileHelper helper = new ProfileHelper(fullName, role, aadhar, gender, address, city, state, pinCode, aaharURL, "yes", "no", "english", empType, unsType, absNo, user.getPhoneNumber(), "www.noneImg.com");
             databaseReference.child("users").child(user.getUid()).setValue(helper);
         }
         catch (Exception e)
@@ -241,8 +249,17 @@ public class EditProfileDetailActivity extends AppCompatActivity {
                 binding.state.setText(helper.getState());
                 binding.AadharNumber.setText(helper.getAadharNo());
                 empType = helper.getEmpType();
+                role = helper.getRole();
                 unsType = helper.getUnSkilledType();
                 absNo = helper.getNoAbsentees();
+                String compareValue = helper.getGender();
+                ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(EditProfileDetailActivity.this, R.array.gender, android.R.layout.simple_spinner_item);
+                adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                binding.gender.setAdapter(adapter);
+                if (compareValue != null) {
+                    int spinnerPosition = adapter.getPosition(compareValue);
+                    binding.gender.setSelection(spinnerPosition);
+                }
             }
 
             @Override
