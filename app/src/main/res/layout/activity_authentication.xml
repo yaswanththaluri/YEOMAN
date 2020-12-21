@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:orientation="vertical"
         android:layout_height="match_parent"
-        tools:context=".Authentication">
+        tools:context=".Activities.Authentication">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -105,10 +105,9 @@
                     android:layout_height="50dp"
                     android:background="@drawable/button_bg"
                     android:text="continue"
-
                     android:textColor="#ffffff"
                     android:layout_marginEnd="20dp"
-                    android:layout_gravity="center_horizontal"
+                    android:layout_gravity="end"
                     android:id="@+id/getOTP"/>
 
             </LinearLayout>
